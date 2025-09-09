@@ -6,7 +6,7 @@
 [![Pessoas contribuidoras][badge-contributors]][contributors]
 [![GitHub Sponsors][badge-github-sponsors]][github-sponsors]
 
-Tradução da Documentação do Nomad para português brasileiro.
+Tradução da Documentação do Go para português brasileiro.
 
 ## Contribuindo
 

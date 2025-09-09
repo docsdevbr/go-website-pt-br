@@ -6,7 +6,7 @@
 [![Contributors][badge-contributors]][contributors]
 [![GitHub Sponsors][badge-github-sponsors]][github-sponsors]
 
-Translation of the Nomad Documentation into Brazilian Portuguese.
+Translation of the Go Documentation into Brazilian Portuguese.
 
 ## Contributing
 
