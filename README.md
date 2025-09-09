@@ -27,11 +27,10 @@ Você pode apoiar o projeto através do [GitHub Sponsors][github-sponsors] ou
 
 ## Licença
 
-Copyright (c) 2024 HashiCorp, Inc.<br>
-Nomad e o logotipo do Nomad são marcas registradas da HashiCorp.
+Copyright (c) 2009 The Go Authors.
 
 Documentação licenciada sob a
-[Business Source License, Versão 1.1][license].<br>
+[Licença BSD de 3 Cláusulas][license].<br>
 A obra original foi traduzida do inglês para o português brasileiro.
 
 [badge-contributors]: https://img.shields.io/github/contributors/docsdevbr/go-doc-pt-br
