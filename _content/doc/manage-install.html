@@ -1,29 +1,56 @@
+<!--
+Copyright (c) 2009 The Go Authors.
+
+Documentation licensed under the 3-Clause BSD License.
+The original work was translated from English into Brazilian Portuguese.
+https://github.com/golang/website/blob/master/LICENSE
+
+source_url: https://github.com/golang/website/blob/master/_content/doc/manage-install.html
+revision: c8dc574843462a6ac8126d5b028fe12979dd01c5
+status: ready
+-->
+
 <!--{
-    "Title": "Managing Go installations"
+    "Title": "Gerenciando instalações Go"
 }-->
 
 <p>
-This topic describes how to install multiple versions of Go on the same machine, as well as how to uninstall Go.
+  Este tópico descreve como instalar várias versões do Go na mesma máquina, bem
+  como desinstalar o Go.
 </p>
 
-<p>For other content on installing, you might be interested in:</p>
+<p>Para outros conteúdos sobre instalação, você pode ter interesse em:</p>
 <ul>
-<li><a href="/doc/install">Download and install</a> -- The simplest way to get installed and running.</li>
-<li><a href="/doc/install/source">Installing Go from source</a> -- How to check out the sources, build them on your own machine, and run them.</li>
+  <li>
+    <a href="/doc/install">Baixe e instale</a> -- A maneira mais simples de
+    instalar e começar a usar.
+  </li>
+  <li>
+    <a href="/doc/install/source">Instalando o Go a partir do código-fonte</a>
+    -- Como verificar o código-fonte, compilá-lo em sua própria máquina e
+    executá-lo.
+  </li>
 </ul>
 
-<h2 id="installing-multiple">Installing multiple Go versions</h2>
+<h2 id="installing-multiple">Instalando várias versões do Go</h2>
 
 <p>
-You can install multiple Go versions on the same machine. For example, you might want to test your code on multiple Go versions. For a list of versions you can install this way, see the <a href="/dl/">download page</a>.
+  Você pode instalar várias versões do Go na mesma máquina.
+  Por exemplo, você pode querer testar seu código em várias versões do Go.
+  Para uma lista de versões que você pode instalar dessa forma, consulte a
+  <a href="/dl/">página de download</a>.
 </p>
 
 <p>
-<strong>Note:</strong> To install using the method described here, you'll need to have <a href="https://git-scm.com/">git</a> installed.
+  <strong>Observação:</strong> para instalar usando o método descrito aqui, você
+  precisará ter o <a href="https://git-scm.com/">git</a> instalado.
 </p>
 
 <p>
-To install additional Go versions, run the <a href="/cmd/go/#hdr-Compile_and_install_packages_and_dependencies"><code>go install</code> command</a>, specifying the download location of the version you want to install. The following example illustrates with version 1.10.7:
+  Para instalar versões adicionais do Go, execute o comando
+  <a href="/cmd/go/#hdr-Compile_and_install_packages_and_dependencies"><code>go install</code></a>,
+  especificando o local de download da versão que deseja instalar.
+  O exemplo a seguir ilustra a versão 1.10.7:
 </p>
 
 <pre>
@@ -32,7 +59,8 @@ $ go1.10.7 download
 </pre>
 
 <p>
-To run <code>go</code> commands with the newly-downloaded version, append the version number to the <code>go</code> command, as follows:
+  Para executar comandos <code>go</code> com a versão recém-baixada, anexe o
+  número da versão ao comando <code>go</code>, da seguinte maneira:
 </p>
 
 <pre>
@@ -41,7 +69,9 @@ go version go1.10.7 linux/amd64
 </pre>
 
 <p>
-When you have multiple versions installed, you can discover where each is installed, look at the version's <code>GOROOT</code> value. For example, run a command such as the following:
+  Quando você tem várias versões instaladas, é possível descobrir onde cada uma
+  está instalada observando o valor <code>GOROOT</code> da versão.
+  Por exemplo, execute um comando como o seguinte:
 </p>
 
 <pre>
@@ -49,49 +79,55 @@ $ go1.10.7 env GOROOT
 </pre>
 
 <p>
-To uninstall a downloaded version, just remove the directory specified by its <code>GOROOT</code> environment variable and the goX.Y.Z binary.
+  Para desinstalar uma versão baixada, basta remover o diretório especificado
+  pela variável de ambiente <code>GOROOT</code> e o binário goX.Y.Z.
 </p>
 
-<h2 id="uninstalling">Uninstalling Go</h2>
+<h2 id="uninstalling">Desinstalando o Go</h2>
 
 <p>
-You can remove Go from your system using the steps described in this topic.
+  Você pode remover o Go do seu sistema usando as etapas descritas neste tópico.
 </p>
 
-<h3 id="remove-config">Removing user config and data</h3>
+<h3 id="remove-config">Removendo configuração e dados da pessoa usuária</h3>
 
 <p>
-Go stores user configuration in the <code>go</code> directory within the user configuration directory,
-as returned by <a href="/pkg/os#UserConfigDir"><code>os.UserConfigDir</code></a>.
-This can also be found as the directory containing the config file returned by <code>go env GOENV</code>.
-</p>
-
-<p>
-Go stores intermediate build artifacts in the directory returned by <code>go env GOCACHE</code>.
-These can be removed with <code>go clean -cache</code>.
+  O Go armazena a configuração da pessoa usuária no diretório <code>go</code>
+  dentro do diretório de configuração da pessoa usuária, conforme retornado por
+  <a href="/pkg/os#UserConfigDir"><code>os.UserConfigDir</code></a>.
+  Este também pode ser encontrado como o diretório que contém o arquivo de
+  configuração retornado por <code>go env GOENV</code>.
 </p>
 
 <p>
-Go stores downloaded dependencies in the directory returned by <code>go env GOMODCACHE</code>.
-These can be removed with <code>go clean -modcache</code>.
+  O Go armazena artefatos de compilação intermediários no diretório retornado
+  por <code>go env GOCACHE</code>.
+  Eles podem ser removidos com <code>go clean -cache</code>.
+</p>
+
+<p>
+  O Go armazena as dependências baixadas no diretório retornado por
+  <code>go env GOMODCACHE</code>.
+  Elas podem ser removidas com <code>go clean -modcache</code>.
 </p>
 
 <h3 id="linux-mac-bsd">Linux / macOS / FreeBSD</h3>
 
 <ol>
 
-<li>Delete the go directory.
+<li>Exclua o diretório go.
 
 <p>
-This is usually /usr/local/go.
+  Geralmente é /usr/local/go.
 </p>
 
 </li>
 
-<li>Remove the Go bin directory from your <code>PATH</code> environment variable.
+<li>Remova o diretório bin do Go da sua variável de ambiente <code>PATH</code>.
 
 <p>
-Under Linux and FreeBSD, edit /etc/profile or $HOME/.profile. If you installed Go with the macOS package, remove the /etc/paths.d/go file.
+  No Linux e FreeBSD, edite /etc/profile ou $HOME/.profile.
+  Se você instalou o Go com o pacote do macOS, remova o arquivo /etc/paths.d/go.
 </p>
 
 </li>
@@ -101,34 +137,41 @@ Under Linux and FreeBSD, edit /etc/profile or $HOME/.profile. If you installed G
 <h3 id="windows">Windows</h3>
 
 <p>
-The simplest way to remove Go is via Add/Remove Programs in the Windows control panel:
+  A maneira mais simples de remover o Go é por meio de
+  Adicionar/Remover Programas no painel de controle do Windows:
 </p>
 
 <ol>
 
-<li>In Control Panel, double-click <strong>Add/Remove Programs</strong>.</li>
-<li>In <strong>Add/Remove Programs</strong>, select <strong>Go Programming Language,</strong> click Uninstall, then follow the prompts.</li>
+  <li>
+    No Painel de Controle, clique duas vezes em
+    <strong>Adicionar/Remover Programas</strong>.
+  </li>
+  <li>Em <strong>Adicionar/Remover Programas</strong>, selecione
+    <strong>Linguagem de Programação Go</strong>, clique em Desinstalar e siga
+    as instruções.
+  </li>
 
 </ol>
 
 <p>
-For removing Go with tools, you can also use the command line:
+  Para remover o Go com ferramentas, você também pode usar a linha de comando:
 </p>
 
 <ul>
 
-<li>Uninstall using the command line by running the following command:
+<li>Desinstale usando a linha de comando executando o seguinte comando:
 
 <pre>
 msiexec /x go{{version}}.windows-{{cpu-arch}}.msi /q
 </pre>
 
 <p>
-
-<strong>Note:</strong> Using this uninstall process for Windows will automatically remove Windows environment variables created by the original installation.
+  <strong>Observação:</strong> Usar este processo de desinstalação para Windows
+  removerá automaticamente as variáveis de ambiente do Windows criadas pela
+  instalação original.
 </p>
 
 </li>
 
 </ul>
-
