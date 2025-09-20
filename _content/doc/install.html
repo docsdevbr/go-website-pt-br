@@ -1,36 +1,47 @@
+<!--
+Copyright (c) 2009 The Go Authors.
+
+Documentation licensed under the 3-Clause BSD License.
+The original work was translated from English into Brazilian Portuguese.
+https://github.com/golang/website/blob/master/LICENSE
+
+source_url: https://github.com/golang/website/blob/master/_content/doc/install.html
+revision: f5a57f122630aa628b9d0d76d6b8e73cc80e815e
+status: ready
+-->
+
 <!--{
-	"Title": "Download and install",
+	"Title": "Baixar e instalar",
   "HideTOC": true,
   "Sidebar": "bug",
   "Breadcrumb": true
 }-->
 
-<p>
-  Download and install Go quickly with the steps described here.
-</p>
-<p>For other content on installing, you might be interested in:</p>
+<p>Baixe e instale o Go rapidamente seguindo os passos descritos aqui.</p>
+<p>Para outros conteúdos sobre instalação, você pode se interessar por:</p>
 <ul>
   <li>
-    <a href="/doc/manage-install">Managing Go installations</a> -- How to
-    install multiple versions and uninstall.
+    <a href="/doc/manage-install">Gerenciando instalações do Go</a> -- Como
+    instalar várias versões e desinstalar.
   </li>
   <li>
-    <a href="/doc/install/source">Installing Go from source</a> -- How to
-    check out the sources, build them on your own machine, and run them.
+    <a href="/doc/install/source">Instalando o Go a partir do código-fonte</a>
+    -- Como fazer o checkout dos códigos-fonte, compilá-los em sua própria
+    máquina e executá-los.
   </li>
 </ul>
 <p class="DownloadBtn">
   <a href="/dl/" id="start" class="btn download">
     <span id="download-description" class="js-downloadDescription">
-      Download
+      Baixar
     </span>
   </a>
 </p>
 
-<h2 id="install">Go installation</h2>
+<h2 id="install">Instalação do Go</h2>
 <p>
-  Select the tab for your computer's operating system below, then follow its
-  installation instructions.
+  Selecione a aba correspondente ao sistema operacional do seu computador abaixo
+  e siga as instruções de instalação.
 </p>
 <div id="os-install-tabs" class="TabSection js-tabSection">
   <div id="os-install-tablist" class="TabSection-tabList" role="tablist">
@@ -76,57 +87,62 @@
   >
     <ol>
       <li>
-        <strong>Remove any previous Go installation</strong> by deleting the /usr/local/go folder
-		(if it exists), then extract the archive you just downloaded into /usr/local, creating a fresh
-		Go tree in /usr/local/go:
-		<pre class="CopyPaste">
-      <span>$ rm -rf /usr/local/go &amp;&amp; tar -C /usr/local -xzf <span id="linux-filename">go1.14.3.linux-amd64.tar.gz</span></span>
-      <button aria-label="Copy and paste the code.">
-        <img class="CopyPaste-icon" src="/images/icons/copy-paste.svg" />
-        <img class="CopyPaste-icon CopyPaste-icon-dark" src="/images/icons/copy-paste-dark.svg" />
-      </button>
-    </pre>
-		<p>
-          (You may need to run each command separately with the necessary permissions, as root or through <code>sudo</code>.)
+        <strong>Remova qualquer instalação anterior do Go</strong> excluindo a
+        pasta /usr/local/go (se existir), então extraia o arquivo que você
+        acabou de baixar para /usr/local, criando uma nova árvore Go em
+        /usr/local/go:
+        <pre class="CopyPaste">
+          <span>$ rm -rf /usr/local/go &amp;&amp; tar -C /usr/local -xzf <span id="linux-filename">go1.14.3.linux-amd64.tar.gz</span></span>
+          <button aria-label="Copie e cole o código.">
+            <img class="CopyPaste-icon" src="/images/icons/copy-paste.svg"/>
+            <img class="CopyPaste-icon CopyPaste-icon-dark" src="/images/icons/copy-paste-dark.svg"/>
+         </button>
+        </pre>
+        <p>
+          (Pode ser necessário executar cada comando separadamente com as
+          permissões necessárias, como root ou via <code>sudo</code>.)
         </p>
-		<p>
-		  <strong>Do not</strong> untar the archive into an existing /usr/local/go tree. This is known to
-		  produce broken Go installations.
-		 </p>
+        <p>
+          <strong>Não</strong> descompacte o arquivo em uma árvore /usr/local/go
+          existente.
+          Isso pode criar instalações de Go com problemas.
+        </p>
       </li>
       <li>
-        Add /usr/local/go/bin to the <code>PATH</code> environment variable.
+        Adicione /usr/local/go/bin à variável de ambiente <code>PATH</code>.
         <p>
-          You can do this by adding the following line to your $HOME/.profile or
-          /etc/profile (for a system-wide installation):
+          Você pode fazer isso adicionando a seguinte linha ao seu arquivo
+          $HOME/.profile ou /etc/profile (para uma instalação em todo o
+          sistema):
         </p>
         <pre class="CopyPaste">
           <span>export PATH=$PATH:/usr/local/go/bin</span>
-          <button aria-label="Copy and paste the code.">
+          <button aria-label="Copie e cole o código.">
             <img class="CopyPaste-icon" src="/images/icons/copy-paste.svg" />
             <img class="CopyPaste-icon CopyPaste-icon-dark" src="/images/icons/copy-paste-dark.svg" />
           </button>
         </pre>
         <p>
-          <strong>Note:</strong> Changes made to a profile file may not apply
-          until the next time you log into your computer. To apply the changes
-          immediately, just run the shell commands directly or execute them from
-          the profile using a command such as
-          <code>source $HOME/.profile</code>.
+          <strong>Observação:</strong> as alterações feitas em um arquivo de
+          perfil podem não ser aplicadas até a próxima vez que você fizer login
+          no seu computador.
+          Para aplicar as alterações imediatamente, basta executar os comandos
+          do shell diretamente ou executá-los a partir do perfil usando um
+          comando como <code>source $HOME/.profile</code>.
         </p>
       </li>
       <li>
-        Verify that you've installed Go by opening a command prompt and typing
-        the following command:
+        Verifique se você instalou o Go abrindo um prompt de comando e digitando
+        o seguinte comando:
         <pre class="CopyPaste">
           <span>$ go version</span>
-          <button aria-label="Copy and paste the code.">
+          <button aria-label="Copie e cole o código.">
             <img class="CopyPaste-icon" src="/images/icons/copy-paste.svg" />
             <img class="CopyPaste-icon CopyPaste-icon-dark" src="/images/icons/copy-paste-dark.svg" />
           </button>
         </pre>
       </li>
-      <li>Confirm that the command prints the installed version of Go.</li>
+      <li>Confirme se o comando imprime a versão instalada do Go.</li>
     </ol>
   </div>
   <div
@@ -138,27 +154,28 @@
   >
     <ol>
       <li>
-        Open the package file you downloaded and follow the prompts to install
-        Go.
+        Abra o arquivo do pacote que você baixou e siga as instruções para
+        instalar o Go.
         <p>
-          The package installs the Go distribution to /usr/local/go. The package
-          should put the /usr/local/go/bin directory in your
-          <code>PATH</code> environment variable. You may need to restart any
-          open Terminal sessions for the change to take effect.
+          O pacote instala a distribuição Go em /usr/local/go.
+          O pacote deve colocar o diretório /usr/local/go/bin na sua variável de
+          ambiente <code>PATH</code>.
+          Pode ser necessário reiniciar qualquer sessão de terminal aberta para
+          que a alteração tenha efeito.
         </p>
       </li>
       <li>
-        Verify that you've installed Go by opening a command prompt and typing
-        the following command:
+        Verifique se você instalou o Go abrindo um prompt de comando e digitando
+        o seguinte comando:
         <pre class="CopyPaste">
           <span>$ go version</span>
-          <button aria-label="Copy and paste the code.">
+          <button aria-label="Copie e cole o código.">
             <img class="CopyPaste-icon" src="/images/icons/copy-paste.svg" />
             <img class="CopyPaste-icon CopyPaste-icon-dark" src="/images/icons/copy-paste-dark.svg" />
           </button>
         </pre>
       </li>
-      <li>Confirm that the command prints the installed version of Go.</li>
+      <li>Confirme se o comando imprime a versão instalada do Go.</li>
     </ol>
   </div>
   <div
@@ -170,47 +187,52 @@
   >
     <ol>
       <li>
-        Open the MSI file you downloaded and follow the prompts to install Go.
+        Abra o arquivo MSI que você baixou e siga as instruções para instalar o
+        Go.
         <p>
-          By default, the installer will install Go to <code>Program Files</code>
-          or <code>Program Files (x86)</code>. You can change the
-          location as needed. After installing, you will need to close and
-          reopen any open command prompts so that changes to the environment
-          made by the installer are reflected at the command prompt.
+          Por padrão, o instalador instalará o Go em
+          <code>Program Files</code> ou <code>Program Files (x86)</code>.
+          Você pode alterar o local conforme necessário.
+          Após a instalação, você precisará fechar e reabrir todos os prompts de
+          comando abertos para que as alterações no ambiente feitas pelo
+          instalador sejam refletidas no prompt de comando.
         </p>
       </li>
       <li>
-        Verify that you've installed Go.
+        Verifique se você instalou o Go.
         <ol>
           <li>
-            In <strong>Windows</strong>, click the <strong>Start</strong> menu.
+            No <strong>Windows</strong>, clique no menu
+            <strong>Iniciar</strong>.
           </li>
           <li>
-            In the menu's search box, type <code>cmd</code>, then press the
-            <strong>Enter</strong> key.
+            Na caixa de pesquisa do menu, digite <code>cmd</code> e pressione a
+            tecla <strong>Enter</strong>.
           </li>
           <li>
-            In the Command Prompt window that appears, type the following
-            command:
+            Na janela do Prompt de Comando que aparece, digite o seguinte
+            comando:
             <pre class="CopyPaste">
               <span>$ go version</span>
-              <button aria-label="Copy and paste the code.">
+              <button aria-label="Copie e cole o código.">
                 <img class="CopyPaste-icon" src="/images/icons/copy-paste.svg" />
                 <img class="CopyPaste-icon CopyPaste-icon-dark" src="/images/icons/copy-paste-dark.svg" />
               </button>
             </pre>
           </li>
-          <li>Confirm that the command prints the installed version of Go.</li>
+          <li>Confirme se o comando imprime a versão instalada do Go.</li>
         </ol>
       </li>
     </ol>
   </div>
 </div>
-<h2 id="code">You're all set!</h2>
+<h2 id="code">Pronto!</h2>
+
 <p class="DocInstall-footer">
-  Visit the
-  <a href="tutorial/getting-started.html">Getting Started tutorial</a> to write
-  some simple Go code. It takes about 10 minutes to complete.
+  Visite o
+  <a href="tutorial/getting-started.html">Tutorial de introdução</a> para
+  escrever algum código Go simples.
+  Leva cerca de 10 minutos para ser concluído.
 </p>
 
 <script async src="/doc/download.js"></script>
