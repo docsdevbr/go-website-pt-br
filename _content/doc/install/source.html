@@ -1,181 +1,208 @@
+<!--
+Copyright (c) 2009 The Go Authors.
+
+Documentation licensed under the 3-Clause BSD License.
+The original work was translated from English into Brazilian Portuguese.
+https://github.com/golang/website/blob/master/LICENSE
+
+source_url: https://github.com/golang/website/blob/master/_content/doc/install/source.html
+revision: f1d710aa6c79f6d9411faa11170b979c58544bf2
+status: ready
+-->
+
 <!--{
-	"Title": "Installing Go from source",
+	"Title": "Instalando o Go a partir do código-fonte",
 	"Breadcrumb": true
 }-->
 
 <p>
-This topic describes how to build and run Go from source code.
-To install with an installer, see <a href="/doc/install">Download and install</a>.
+  Este tópico descreve como compilar e executar o Go a partir do código-fonte.
+  Para instalar com um instalador, consulte
+  <a href="/doc/install">Baixe e instale</a>.
 </p>
 
-<h2 id="introduction">Introduction</h2>
+<h2 id="introduction">Introdução</h2>
 
 <p>
-Go is an open source project, distributed under a
-<a href="/LICENSE">BSD-style license</a>.
-This document explains how to check out the sources,
-build them on your own machine, and run them.
+  Go é um projeto de código aberto, distribuído sob uma
+  <a href="/LICENSE">licença no estilo BSD</a>.
+  Este documento explica como verificar o código-fonte, compilá-lo em sua
+  própria máquina e executá-lo.
 </p>
 
 <p>
-Most users don't need to do this, and will instead install
-from precompiled binary packages as described in
-<a href="/doc/install">Download and install</a>,
-a much simpler process.
-If you want to help develop what goes into those precompiled
-packages, though, read on.
+  A maioria das pessoas usuárias não precisa fazer isso e, em vez disso,
+  instalará a partir de pacotes binários pré-compilados, conforme descrito em
+  <a href="/doc/install">Baixe e instale</a>, um processo muito mais simples.
+  Se você quiser ajudar a desenvolver o conteúdo desses pacotes pré-compilados,
+  continue lendo.
 </p>
 
 <div class="detail">
 
 <p>
-There are two official Go compiler toolchains.
-This document focuses on the <code>gc</code> Go
-compiler and tools.
-For information on how to work on <code>gccgo</code>, a more traditional
-compiler using the GCC back end, see
-<a href="/doc/install/gccgo">Setting up and using gccgo</a>.
+  Existem duas toolchains oficiais para o compilador Go.
+  Este documento se concentra no compilador e nas ferramentas Go
+  <code>gc</code>.
+  Para obter informações sobre como trabalhar com o <code>gccgo</code>, um
+  compilador mais tradicional que utiliza o backend do GCC, consulte
+  <a href="/doc/install/gccgo">Configurando e usando o gccgo</a>.
 </p>
 
 <p>
-The Go compilers support the following instruction sets:
+  Os compiladores Go suportam os seguintes conjuntos de instruções:
 
-<dl>
-<dt>
-  <code>amd64</code>, <code>386</code>
-</dt>
-<dd>
-  The <code>x86</code> instruction set, 64- and 32-bit.
-</dd>
-<dt>
-  <code>arm64</code>, <code>arm</code>
-</dt>
-<dd>
-  The <code>ARM</code> instruction set, 64-bit (<code>AArch64</code>) and 32-bit.
-</dd>
-<dt>
-  <code>loong64</code>
-</dt>
-<dd>
-  The 64-bit LoongArch instruction set.
-</dd>
-<dt>
-  <code>mips64</code>, <code>mips64le</code>, <code>mips</code>,  <code>mipsle</code>
-</dt>
-<dd>
-  The <code>MIPS</code> instruction set, big- and little-endian, 64- and 32-bit.
-</dd>
-<dt>
-  <code>ppc64</code>, <code>ppc64le</code>
-</dt>
-<dd>
-  The 64-bit PowerPC instruction set, big- and little-endian.
-</dd>
-<dt>
-  <code>riscv64</code>
-</dt>
-<dd>
-  The 64-bit RISC-V instruction set.
-</dd>
-<dt>
-  <code>s390x</code>
-</dt>
-<dd>
-  The IBM z/Architecture.
-</dd>
-<dt>
-  <code>wasm</code>
-</dt>
-<dd>
-  <a href="https://webassembly.org">WebAssembly</a>.
-</dd>
-</dl>
+  <dl>
+    <dt>
+      <code>amd64</code>, <code>386</code>
+    </dt>
+    <dd>
+      O conjunto de instruções <code>x86</code>, de 64 e 32 bits.
+    </dd>
+    <dt>
+      <code>arm64</code>, <code>arm</code>
+    </dt>
+    <dd>
+      O conjunto de instruções <code>ARM</code>, de 64 bits
+      (<code>AArch64</code>) e 32 bits.
+    </dd>
+    <dt>
+      <code>loong64</code>
+    </dt>
+    <dd>
+      O conjunto de instruções LoongArch de 64 bits.
+    </dd>
+    <dt>
+      <code>mips64</code>, <code>mips64le</code>, <code>mips</code>,
+      <code>mipsle</code>
+    </dt>
+    <dd>
+      O conjunto de instruções <code>MIPS</code>, big-endian e little-endian, de
+      64 e 32 bits.
+    </dd>
+    <dt>
+      <code>ppc64</code>, <code>ppc64le</code>
+    </dt>
+    <dd>
+      O conjunto de instruções PowerPC de 64 bits, big-endian e little-endian.
+    </dd>
+    <dt>
+      <code>riscv64</code>
+    </dt>
+    <dd>
+      O conjunto de instruções RISC-V de 64 bits.
+    </dd>
+    <dt>
+      <code>s390x</code>
+    </dt>
+    <dd>
+      A z/Architecture da IBM.
+    </dd>
+    <dt>
+      <code>wasm</code>
+    </dt>
+    <dd>
+      <a href="https://webassembly.org">WebAssembly</a>.
+    </dd>
+  </dl>
 </p>
 
 <p>
-The compilers can target the AIX, Android, DragonFly BSD, FreeBSD,
-Illumos, Linux, macOS/iOS (Darwin), NetBSD, OpenBSD, Plan 9, Solaris,
-and Windows operating systems (although not all operating systems
-support all architectures).
+  Os compiladores podem ter como alvo os sistemas operacionais AIX, Android,
+  DragonFly BSD, FreeBSD, Illumos, Linux, macOS/iOS (Darwin), NetBSD, OpenBSD,
+  Plan 9, Solaris e Windows (embora nem todos os sistemas operacionais suportem
+  todas as arquiteturas).
 </p>
 
 <p>
-A list of ports which are considered "first class" is available at the
-<a href="/wiki/PortingPolicy#first-class-ports">first class ports</a>
-wiki page.
+  Uma lista de ports considerados de "primeira classe" está disponível na página
+  wiki
+  <a href="/wiki/PortingPolicy#first-class-ports">ports de primeira classe</a>.
 </p>
 
 <p>
-The full set of supported combinations is listed in the
-discussion of <a href="#environment">environment variables</a> below.
+  O conjunto completo de combinações suportadas está listado na discussão sobre
+  <a href="#environment">variáveis de ambiente</a> abaixo.
 </p>
 
 <p>
-See the Go Wiki MinimumRequirements page for the
-<a href="/wiki/MinimumRequirements">overall system requirements</a>.
+  Consulte a página MinimumRequirements da Wiki do Go para os
+  <a href="/wiki/MinimumRequirements">requisitos gerais do sistema</a>.
 </p>
 
 </div>
 
-<h2 id="go14">Install Go compiler binaries for bootstrap</h2>
+<h2 id="go14">Instale binários do compilador Go para o bootstrap</h2>
 
 <p>
-The Go toolchain is written in Go. To build it, you need a Go compiler installed.
-The scripts that do the initial build of the tools look for a "go" command
-in <code>$PATH</code>, so as long as you have Go installed in your
-system and configured in your <code>$PATH</code>, you are ready to build Go
-from source.
-Or if you prefer you can set <code>$GOROOT_BOOTSTRAP</code> to the
-root of a Go installation to use to build the new Go toolchain;
-<code>$GOROOT_BOOTSTRAP/bin/go</code> should be the go command to use.</p>
+  A toolchain Go é escrita em Go.
+  Para compilá-la, você precisa de um compilador Go instalado.
+  Os scripts que fazem a compilação inicial das ferramentas procuram um comando
+  "go" em <code>$PATH</code>, então, desde que você tenha o Go instalado em seu
+  sistema e configurado em <code>$PATH</code>, você pode compilar o Go a partir
+  do código-fonte.
+  Ou, se preferir, você pode definir <code>$GOROOT_BOOTSTRAP</code> como a raiz
+  de uma instalação Go para usar na compilação da nova toolchain Go;
+  <code>$GOROOT_BOOTSTRAP/bin/go</code> deve ser o comando go a ser usado.
+</p>
 
 <p>
-The minimum version of Go required depends on the target version of Go:
+  A versão mínima do Go necessária depende da versão alvo do Go:
 </p>
 
 <ul>
-<li> Go &lt;= 1.4: a C toolchain.
-<li> 1.5 &lt;= Go &lt;= 1.19: a Go 1.4 compiler.
-<li> 1.20 &lt;= Go &lt;= 1.21: a Go 1.17 compiler.
-<li> 1.22 &lt;= Go &lt;= 1.23: a Go 1.20 compiler.
-<li> Going forward, Go version 1.N will require a Go 1.M compiler, 
-where M is N-2 rounded down to an even number. Example: Go 1.24 and 1.25 require Go 1.22.
+  <li>Go &lt;= 1.4: uma toolchain C.
+  <li>1.5 &lt;= Go &lt;= 1.19: um compilador Go 1.4.
+  <li>1.20 &lt;= Go &lt;= 1.21: um compilador Go 1.17.
+  <li>1.22 &lt;= Go &lt;= 1.23: um compilador Go 1.20.
+  <li>
+    Daqui para frente, a versão 1.N do Go exigirá um compilador Go 1.M, onde M é
+    N-2 arredondado para baixo para um número par.
+    Exemplo: Go 1.24 e 1.25 exigem Go 1.22.
 </ul>
 
 <p>
-There are four possible ways to obtain a bootstrap toolchain:
+  Existem quatro maneiras possíveis de obter uma toolchain de bootstrap:
 </p>
 
 <ul>
-<li>Download a recent binary release of Go.
-<li>Cross-compile a toolchain using a system with a working Go installation.
-<li>Use gccgo.
-<li>Compile a toolchain from Go 1.4, the last Go release with a compiler written in C.
+  <li>Baixar uma versão binária recente do Go.</li>
+  <li>
+    Realizar a compilação cruzada da toolchain usando um sistema com uma
+    instalação funcional do Go.
+  </li>
+  <li>Usar o gccgo.</li>
+  <li>
+    Compilar uma toolchain a partir do Go 1.4, a última versão do Go com um
+    compilador escrito em C.
+  </li>
 </ul>
 
+<p>Essas abordagens são detalhadas abaixo.</p>
+
+<h3 id="bootstrapFromBinaryRelease">
+  Toolchain de bootstrap a partir de uma versão binária
+</h3>
+
 <p>
-These approaches are detailed below.
+  Para usar uma versão binária como uma toolchain de bootstrap, consulte
+  <a href="/dl/">a página de downloads</a> ou use qualquer outra distribuição Go
+  empacotada que atenda aos requisitos mínimos de versão.
 </p>
 
-<h3 id="bootstrapFromBinaryRelease">Bootstrap toolchain from binary release</h3>
+<h3 id="bootstrapFromCrosscompiledSource">
+  Toolchain de bootstrap a partir do código-fonte com compilação cruzada
+</h3>
 
 <p>
-To use a binary release as a bootstrap toolchain, see
-<a href="/dl/">the downloads page</a> or use any other
-packaged Go distribution meeting the minimum version requirements.
-</p>
-
-<h3 id="bootstrapFromCrosscompiledSource">Bootstrap toolchain from cross-compiled source</h3>
-
-<p>
-To cross-compile a bootstrap toolchain from source, which is
-necessary on systems Go 1.4 did not target (for
-example, <code>linux/ppc64le</code>), install Go on a different system
-and run <a href="/src/bootstrap.bash">bootstrap.bash</a>.
+  Para realizar a compilação cruzada da toolchain de bootstrap a partir do
+  código-fonte, o que é necessário em sistemas que o Go 1.4 não tinha como alvo
+  (por exemplo, <code>linux/ppc64le</code>), instale o Go em um sistema
+  diferente e execute <a href="/src/bootstrap.bash">bootstrap.bash</a>.
 </p>
 
 <p>
-When run as (for example)
+  Quando executado como (por exemplo):
 </p>
 
 <pre>
@@ -183,18 +210,20 @@ $ GOOS=linux GOARCH=ppc64 ./bootstrap.bash
 </pre>
 
 <p>
-<code>bootstrap.bash</code> cross-compiles a toolchain for that <code>GOOS/GOARCH</code>
-combination, leaving the resulting tree in <code>../../go-${GOOS}-${GOARCH}-bootstrap</code>.
-That tree can be copied to a machine of the given target type
-and used as <code>GOROOT_BOOTSTRAP</code> to bootstrap a local build.
+  <code>bootstrap.bash</code> realiza a compilação cruzada da toolchain para a
+  combinação <code>GOOS/GOARCH</code>, deixando a árvore resultante em
+  <code>../../go-${GOOS}-${GOARCH}-bootstrap</code>.
+  Essa árvore pode ser copiada para uma máquina do tipo alvo fornecido e usada
+  como <code>GOROOT_BOOTSTRAP</code> para inicializar uma compilação local.
 </p>
 
-<h3 id="bootstrapFromGccgo">Bootstrap toolchain using gccgo</h3>
+<h3 id="bootstrapFromGccgo">Toolchain de bootstrap usando gccgo</h3>
 
 <p>
-To use gccgo as the bootstrap toolchain, you need to arrange
-for <code>$GOROOT_BOOTSTRAP/bin/go</code> to be the go tool that comes
-as part of gccgo 5. For example on Ubuntu Vivid:
+  Para usar o gccgo como toolchain de bootstrap, você precisa fazer com que
+  <code>$GOROOT_BOOTSTRAP/bin/go</code> seja a ferramenta go que vem como parte
+  do gccgo 5.
+  Por exemplo, no Ubuntu Vivid:
 </p>
 
 <pre>
@@ -203,71 +232,80 @@ $ sudo update-alternatives --set go /usr/bin/go-5
 $ GOROOT_BOOTSTRAP=/usr ./make.bash
 </pre>
 
-<h3 id="bootstrapFromSource">Bootstrap toolchain from C source code</h3>
+<h3 id="bootstrapFromSource">
+  Toolchain de bootstrap a partir do código-fonte C
+</h3>
 
 <p>
-To build a bootstrap toolchain from C source code, use
-either the git branch <code>release-branch.go1.4</code> or
-<a href="https://dl.google.com/go/go1.4-bootstrap-20171003.tar.gz">go1.4-bootstrap-20171003.tar.gz</a>,
-which contains the Go 1.4 source code plus accumulated fixes
-to keep the tools running on newer operating systems.
-(Go 1.4 was the last distribution in which the toolchain was written in C.)
-After unpacking the Go 1.4 source, <code>cd</code> to
-the <code>src</code> subdirectory, set <code>CGO_ENABLED=0</code> in
-the environment, and run <code>make.bash</code> (or,
-on Windows, <code>make.bat</code>).
+  Para compilar uma toolchain de bootstrap a partir do código-fonte C, use o
+  branch git <code>release-branch.go1.4</code> ou
+  <a href="https://dl.google.com/go/go1.4-bootstrap-20171003.tar.gz">
+    go1.4-bootstrap-20171003.tar.gz
+  </a>,
+  que contém o código-fonte do Go 1.4, além das correções acumuladas para manter
+  as ferramentas funcionando em sistemas operacionais mais recentes.
+  (Go 1.4 foi a última distribuição em que a toolchain foi escrita em C.)
+  Após descompactar o código-fonte do Go 1.4, execute <code>cd</code> para o
+  subdiretório <code>src</code>, defina <code>CGO_ENABLED=0</code> no ambiente e
+  execute <code>make.bash</code> (ou, no Windows, <code>make.bat</code>).
 </p>
 
 <p>
-Once the Go 1.4 source has been unpacked into your GOROOT_BOOTSTRAP directory,
-you must keep this git clone instance checked out to branch
-<code>release-branch.go1.4</code>.  Specifically, do not attempt to reuse
-this git clone in the later step named "Fetch the repository."  The go1.4
-bootstrap toolchain <b>must be able</b> to properly traverse the go1.4 sources
-that it assumes are present under this repository root.
+  Após descompactar o código-fonte do Go 1.4 no seu diretório GOROOT_BOOTSTRAP,
+  você deve manter o checkout desta instância do git clone no branch
+  <code>release-branch.go1.4</code>.
+  Especificamente, não tente reutilizar este git clone na etapa posterior
+  chamada "Fazer o fetch do repositório".
+  A toolchain de bootstrap do go1.4 <b>deve ser capaz</b> de percorrer
+  corretamente os códigos-fonte do go1.4 que ela presume estarem presentes nesta
+  raiz do repositório.
 </p>
 
 <p>
-Note that Go 1.4 does not run on all systems that later versions of Go do.
-In particular, Go 1.4 does not support current versions of macOS.
-On such systems, the bootstrap toolchain must be obtained using one of the other methods.
+  Observe que o Go 1.4 não roda em todos os sistemas que as versões posteriores
+  do Go rodam.
+  Em particular, o Go 1.4 não oferece suporte às versões atuais do macOS.
+  Nesses sistemas, a toolchain de bootstrap deve ser obtida usando um dos outros
+  métodos.
 </p>
 
-<h2 id="git">Install Git, if needed</h2>
+<h2 id="git">Instale o Git, se necessário</h2>
 
 <p>
-To perform the next step you must have Git installed. (Check that you
-have a <code>git</code> command before proceeding.)
-</p>
-
-<p>
-If you do not have a working Git installation,
-follow the instructions on the
-<a href="https://git-scm.com/downloads">Git downloads</a> page.
-</p>
-
-<h2 id="ccompiler">(Optional) Install a C compiler</h2>
-
-<p>
-To build a Go installation
-with <code><a href="/cmd/cgo">cgo</a></code> support, which permits Go
-programs to import C libraries, a C compiler such as <code>gcc</code>
-or <code>clang</code> must be installed first. Do this using whatever
-installation method is standard on the system.
+  Para executar a próxima etapa, você precisa ter o Git instalado.
+  (Verifique se você possui um comando <code>git</code> antes de prosseguir.)
 </p>
 
 <p>
-To build without <code>cgo</code>, set the environment variable
-<code>CGO_ENABLED=0</code> before running <code>all.bash</code> or
-<code>make.bash</code>.
+  Se você não tiver uma instalação do Git funcionando, siga as instruções na
+  página <a href="https://git-scm.com/downloads">Downloads do Git</a>.
 </p>
 
-<h2 id="fetch">Fetch the repository</h2>
+<h2 id="ccompiler">(Opcional) Instale um compilador C</h2>
 
-<p>Change to the directory where you intend to install Go, and make sure
-the <code>goroot</code> directory does not exist. Then clone the repository
-and check out the latest release tag or release branch (<code class="versionTag">go1.22.0</code>, or <code class="versionTag">release-branch.go1.22</code>,
-for example):</p>
+<p>
+  Para compilar uma instalação Go com suporte a
+  <code><a href="/cmd/cgo">cgo</a></code>, que permite que programas Go importem
+  bibliotecas C, um compilador C como <code>gcc</code> ou <code>clang</code>
+  deve ser instalado primeiro.
+  Faça isso usando qualquer método de instalação padrão no sistema.
+</p>
+
+<p>
+  Para compilar sem o <code>cgo</code>, defina a variável de ambiente
+  <code>CGO_ENABLED=0</code> antes de executar <code>all.bash</code> ou
+  <code>make.bash</code>.
+</p>
+
+<h2 id="fetch">Faça o fetch do repositório</h2>
+
+<p>
+  Mude para o diretório onde pretende instalar o Go e certifique-se de que o
+  diretório <code>goroot</code> não existe.
+  Em seguida, clone o repositório e faça o checkout da última tag ou branch de
+  lançamento (<code class="versionTag">go1.22.0</code> ou
+  <code class="versionTag">release-branch.go1.22</code>, por exemplo):
+</p>
 
 <pre>
 $ git clone https://go.googlesource.com/go goroot
@@ -276,39 +314,45 @@ $ git checkout <span class="versionTag"><i>&lt;tag&gt;</i></span>
 </pre>
 
 <p class="whereTag">
-Where <code>&lt;tag&gt;</code> is the version string of the release.
+  Onde <code>&lt;tag&gt;</code> é a string da versão de lançamento.
 </p>
-
-<p>Go will be installed in the directory where it is checked out. For example,
-if Go is checked out in <code>$HOME/goroot</code>, executables will be installed
-in <code>$HOME/goroot/bin</code>. The directory may have any name, but note
-that if Go is checked out in <code>$HOME/go</code>, it will conflict with
-the default location of <code>$GOPATH</code>.
-See <a href="#gopath"><code>GOPATH</code></a> below.</p>
 
 <p>
-Reminder: If you opted to also compile the bootstrap binaries from source (in an
-earlier section), you still need to <code>git clone</code> again at this point
-(to checkout the latest <code>&lt;tag&gt;</code>), because you must keep your
-go1.4 repository distinct.
+  O Go será instalado no diretório onde for feito o checkout.
+  Por exemplo, se o checkout do Go for feito em <code>$HOME/goroot</code>, os
+  executáveis serão instalados em <code>$HOME/goroot/bin</code>.
+  O diretório pode ter qualquer nome, mas observe que se o checkout do Go for
+  feito em <code>$HOME/go</code>, ele entrará em conflito com o local padrão de
+  <code>$GOPATH</code>.
+  Consulte <a href="#gopath"><code>GOPATH</code></a> abaixo.
 </p>
 
-<h2 id="head">(Optional) Switch to the master branch</h2>
+<p>
+  Lembrete: Se você optou por compilar também os binários de bootstrap a partir
+  do código-fonte (em uma seção anterior), você ainda precisa executar
+  <code>git clone</code> novamente neste ponto (para fazer o checkout da
+  <code>&lt;tag&gt;</code> mais recente), pois você precisa manter seu
+  repositório go1.4 separado.
+</p>
 
-<p>If you intend to modify the go source code, and
-<a href="/doc/contribute.html">contribute your changes</a>
-to the project, then move your repository
-off the release tag, and onto the master (development) branch.
-Otherwise, skip this step.</p>
+<h2 id="head">(Opcional) Alterne para o branch master</h2>
+
+<p>
+  Se você pretende modificar o código-fonte do Go e
+  <a href="/doc/contribute.html">contribuir com suas alterações</a> para o
+  projeto, mova seu repositório da tag release para o branch master
+  (desenvolvimento).
+  Caso contrário, pule esta etapa.
+</p>
 
 <pre>
 $ git checkout master
 </pre>
 
-<h2 id="install">Install Go</h2>
+<h2 id="install">Instale o Go</h2>
 
 <p>
-To build the Go distribution, run
+  Para compilar a distribuição Go, execute:
 </p>
 
 <pre>
@@ -317,11 +361,11 @@ $ ./all.bash
 </pre>
 
 <p>
-(To build under Windows use <code>all.bat</code>.)
+  (Para compilar no Windows, use <code>all.bat</code>.)
 </p>
 
 <p>
-If all goes well, it will finish by printing output like:
+  Se tudo correr bem, o processo será concluído com uma saída como:
 </p>
 
 <pre>
@@ -334,30 +378,30 @@ Installed commands in /home/you/go/bin.
 </pre>
 
 <p>
-where the details on the last few lines reflect the operating system,
-architecture, and root directory used during the install.
+  onde os detalhes nas últimas linhas refletem o sistema operacional,
+  a arquitetura e o diretório raiz usados durante a instalação.
 </p>
 
 <div class="detail">
-<p>
-For more information about ways to control the build, see the discussion of
-<a href="#environment">environment variables</a> below.
-<code>all.bash</code> (or <code>all.bat</code>) runs important tests for Go,
-which can take more time than simply building Go. If you do not want to run
-the test suite use <code>make.bash</code> (or <code>make.bat</code>)
-instead.
-</p>
+  <p>
+    Para mais informações sobre como controlar a compilação, consulte a
+    discussão sobre <a href="#environment">variáveis de ambiente</a> abaixo.
+    <code>all.bash</code> (ou <code>all.bat</code>) executa testes importantes
+    para o Go, o que pode levar mais tempo do que simplesmente compilar o Go.
+    Se você não quiser executar o conjunto de testes, use <code>make.bash</code>
+    (ou <code>make.bat</code>).
+  </p>
 </div>
 
-
-<h2 id="testing">Testing your installation</h2>
+<h2 id="testing">Testando sua instalação</h2>
 
 <p>
-Check that Go is installed correctly by building a simple program.
+  Verifique se o Go está instalado corretamente compilando um programa simples.
 </p>
 
 <p>
-Create a file named <code>hello.go</code> and put the following program in it:
+  Crie um arquivo chamado <code>hello.go</code> e insira o seguinte programa
+  nele:
 </p>
 
 <pre>
@@ -366,83 +410,85 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Printf("hello, world\n")
+	fmt.Printf("olá, mundo\n")
 }
 </pre>
 
 <p>
-Then run it with the <code>go</code> tool:
+  Em seguida, execute-o com a ferramenta <code>go</code>:
 </p>
 
 <pre>
 $ go run hello.go
-hello, world
+olá, mundo
 </pre>
 
 <p>
-If you see the "hello, world" message then Go is installed correctly.
+  Se você vir a mensagem "olá, mundo", o Go está instalado corretamente.
 </p>
 
-<h2 id="gopath">Set up your work environment</h2>
+<h2 id="gopath">Configure seu ambiente de trabalho</h2>
 
 <p>
-You're almost done.
-You just need to do a little more setup.
-</p>
-
-<p>
-<a href="/doc/code.html" class="download" id="start">
-<span class="big">How to Write Go Code</span>
-<span class="desc">Learn how to set up and use the Go tools</span>
-</a>
+  Você está quase terminando.
+  Você só precisa configurar um pouco mais.
 </p>
 
 <p>
-The <a href="/doc/code.html">How to Write Go Code</a> document
-provides <b>essential setup instructions</b> for using the Go tools.
+  <a href="/doc/code.html" class="download" id="start">
+    <span class="big">Como escrever código em Go</span>
+    <span class="desc">Aprenda a configurar e usar as ferramentas Go</span>
+  </a>
 </p>
 
+<p>
+  O documento <a href="/doc/code.html">Como escrever código em Go</a> fornece
+  <b>instruções essenciais de configuração</b> para usar as ferramentas Go.
+</p>
 
-<h2 id="tools">Install additional tools</h2>
+<h2 id="tools">Instale as ferramentas adicionais</h2>
 
 <p>
-The source code for several Go tools (including <a href="https://pkg.go.dev/golang.org/x/tools/gopls">gopls</a>)
-is kept in <a href="https://golang.org/x/tools">the golang.org/x/tools repository</a>.
-To install one of the tools (<code>gopls</code> in this case):
+  O código-fonte de várias ferramentas Go (incluindo
+  <a href="https://pkg.go.dev/golang.org/x/tools/gopls">gopls</a>) é mantido no
+  <a href="https://golang.org/x/tools">repositório golang.org/x/tools</a>.
+  Para instalar uma das ferramentas (<code>gopls</code>, neste caso):
 </p>
 
 <pre>
 $ go install golang.org/x/tools/gopls@latest
 </pre>
 
-<h2 id="community">Community resources</h2>
+<h2 id="community">Recursos da comunidade</h2>
 
 <p>
-The usual community resources listed on the <a href="/help/">help page</a> have
-active developers that can help you with problems with your installation or your
-development work.
-For those who wish to keep up to date,
-there is another mailing list, <a href="https://groups.google.com/group/golang-checkins">golang-checkins</a>,
-that receives a message summarizing each checkin to the Go repository.
+  Os recursos habituais da comunidade listados na
+  <a href="/help/">página de ajuda</a> têm pessoas desenvolvedoras ativas que
+  podem ajudar você com problemas na sua instalação ou no seu trabalho de
+  desenvolvimento.
+  Para aquelas pessoas que desejam se manter atualizadas, há outra lista de
+  e-mails,
+  <a href="https://groups.google.com/group/golang-checkins">golang-checkins</a>,
+  que recebe uma mensagem resumindo cada check-in no repositório Go.
 </p>
 
 <p>
-Bugs can be reported using the <a href="/issue/new">Go issue tracker</a>.
+  Bugs podem ser reportados usando o
+  <a href="/issue/new">rastreador de issues do Go</a>.
 </p>
 
-
-<h2 id="releases">Keeping up with releases</h2>
+<h2 id="releases">Acompanhando os lançamentos</h2>
 
 <p>
-New releases are announced on the
-<a href="https://groups.google.com/group/golang-announce">golang-announce</a>
-mailing list.
-Each announcement mentions the latest release tag, for instance,
-<code class="versionTag">go1.9</code>.
+  Novos lançamentos são anunciados na lista de e-mails
+  <a href="https://groups.google.com/group/golang-announce">golang-announce</a>.
+  Cada anúncio menciona a tag de lançamento mais recente, por exemplo,
+  <code class="versionTag">go1.9</code>.
 </p>
 
 <p>
-To update an existing tree to the latest release, you can run:
+  Para atualizar uma árvore existente para a versão mais recente, você pode
+  executar:
 </p>
 
 <pre>
@@ -453,356 +499,522 @@ $ ./all.bash
 </pre>
 
 <p class="whereTag">
-Where <code>&lt;tag&gt;</code> is the version string of the release.
+  Onde <code>&lt;tag&gt;</code> é a string de versão do lançamento.
 </p>
 
-
-<h2 id="environment">Optional environment variables</h2>
+<h2 id="environment">Variáveis de ambiente opcionais</h2>
 
 <p>
-The Go compilation environment can be customized by environment variables.
-<i>None is required by the build</i>, but you may wish to set some
-to override the defaults.
+  O ambiente de compilação do Go pode ser personalizado por variáveis de
+  ambiente.
+  <i>Nenhuma delas é necessária para a compilação</i>, mas você pode definir
+  algumas para substituir os padrões.
 </p>
 
 <ul>
-<li><code>$GOROOT</code>
-<p>
-The root of the Go tree, often <code>$HOME/go1.X</code>.
-Its value is built into the tree when it is compiled, and
-defaults to the parent of the directory where <code>all.bash</code> was run.
-There is no need to set this unless you want to switch between multiple
-local copies of the repository.
-</p>
-</li>
+  <li>
+    <code>$GOROOT</code>
+    <p>
+      A raiz da árvore Go, geralmente <code>$HOME/go1.X</code>.
+      Seu valor é incorporado à árvore quando ela é compilada e assume como
+      padrão o pai do diretório onde <code>all.bash</code> foi executado.
+      Não há necessidade de definir isso, a menos que você queira alternar entre
+      várias cópias locais do repositório.
+    </p>
+  </li>
 
-<li><code>$GOROOT_FINAL</code>
-<p>
-The value assumed by installed binaries and scripts when
-<code>$GOROOT</code> is not set explicitly.
-It defaults to the value of <code>$GOROOT</code>.
-If you want to build the Go tree in one location
-but move it elsewhere after the build, set
-<code>$GOROOT_FINAL</code> to the eventual location.
-</p>
-</li>
+  <li>
+    <code>$GOROOT_FINAL</code>
+    <p>
+      O valor assumido pelos binários e scripts instalados quando
+      <code>$GOROOT</code> não é definida explicitamente.
+      O valor padrão é <code>$GOROOT</code>.
+      Se você quiser construir a árvore Go em um local mas movê-la para outro
+      local após a construção, defina <code>$GOROOT_FINAL</code> como o local
+      final.
+    </p>
+  </li>
 
-<li id="gopath"><code>$GOPATH</code>
-<p>
-The directory where Go projects outside the Go distribution are typically
-checked out. For example, <code>golang.org/x/tools</code> might be checked out
-to <code>$GOPATH/src/golang.org/x/tools</code>. Executables outside the
-Go distribution are installed in <code>$GOPATH/bin</code> (or
-<code>$GOBIN</code>, if set). Modules are downloaded and cached in
-<code>$GOPATH/pkg/mod</code>.
-</p>
+  <li id="gopath">
+    <code>$GOPATH</code>
+    <p>
+      O diretório onde normalmente é feito o checkout de projetos Go fora da
+      distribuição Go.
+      Por exemplo, o checkout de <code>golang.org/x/tools</code> pode ser feito em
+      <code>$GOPATH/src/golang.org/x/tools</code>.
+      Executáveis fora da distribuição Go são instalados em
+      <code>$GOPATH/bin</code> (ou <code>$GOBIN</code>, se definida).
+      Os módulos são baixados e armazenados em cache em
+      <code>$GOPATH/pkg/mod</code>.
+    </p>
 
-<p>The default location of <code>$GOPATH</code> is <code>$HOME/go</code>,
-and it's not usually necessary to set <code>GOPATH</code> explicitly. However,
-if you have checked out the Go distribution to <code>$HOME/go</code>,
-you must set <code>GOPATH</code> to another location to avoid conflicts.
-</p>
-</li>
+    <p>
+      O local padrão de <code>$GOPATH</code> é <code>$HOME/go</code>, e geralmente
+      não é necessário definir <code>GOPATH</code> explicitamente.
+      No entanto, se você tiver feito o checkout da distribuição Go em
+      <code>$HOME/go</code>, você deve definir <code>GOPATH</code> como outro
+      local para evitar conflitos.
+    </p>
+  </li>
 
-<li><code>$GOBIN</code>
-<p>
-The directory where executables outside the Go distribution are installed
-using the <a href="/cmd/go">go command</a>. For example,
-<code>go install golang.org/x/tools/gopls@latest</code> downloads, builds,
-and installs <code>$GOBIN/gopls</code>. By default, <code>$GOBIN</code> is
-<code>$GOPATH/bin</code> (or <code>$HOME/go/bin</code> if <code>GOPATH</code>
-is not set). After installing, you will want to add this directory to
-your <code>$PATH</code> so you can use installed tools.
-</p>
+  <li>
+    <code>$GOBIN</code>
+    <p>
+      O diretório onde executáveis fora da distribuição Go são instalados usando o
+      <a href="/cmd/go">comando go</a>.
+      Por exemplo, <code>go install golang.org/x/tools/gopls@latest</code> baixa,
+      compila e instala <code>$GOBIN/gopls</code>.
+      Por padrão, <code>$GOBIN</code> é <code>$GOPATH/bin</code> (ou
+      <code>$HOME/go/bin</code>, se <code>GOPATH</code> não estiver definida).
+      Após a instalação, você deverá adicionar este diretório à sua variável
+      <code>$PATH</code> para poder usar as ferramentas instaladas.
+    </p>
 
-<p>
-Note that the Go distribution's executables are installed in
-<code>$GOROOT/bin</code> (for executables invoked by people) or
-<code>$GOTOOLDIR</code> (for executables invoked by the go command;
-defaults to <code>$GOROOT/pkg/$GOOS_$GOARCH</code>) instead of
-<code>$GOBIN</code>.
-</p>
-</li>
+    <p>
+      Observe que os executáveis da distribuição Go são instalados em
+      <code>$GOROOT/bin</code> (para executáveis invocados por pessoas) ou
+      <code>$GOTOOLDIR</code> (para executáveis invocados pelo comando go; o
+      padrão é <code>$GOROOT/pkg/$GOOS_$GOARCH</code>) em vez de
+      <code>$GOBIN</code>.
+    </p>
+  </li>
 
-<li><code>$GOOS</code> and <code>$GOARCH</code>
-<p>
-The name of the target operating system and compilation architecture.
-These default to the values of <code>$GOHOSTOS</code> and
-<code>$GOHOSTARCH</code> respectively (described below).
-</p>
+  <li>
+    <code>$GOOS</code> e <code>$GOARCH</code>
+    <p>
+      O nome do sistema operacional e arquitetura de compilação alvos.
+      Estas variáveis têm como valores padrão <code>$GOHOSTOS</code> e
+      <code>$GOHOSTARCH</code>, respectivamente (descritos abaixo).
+    </p>
 
-<p>
-Choices for <code>$GOOS</code> are
-<code>android</code>, <code>darwin</code>, <code>dragonfly</code>,
-<code>freebsd</code>, <code>illumos</code>, <code>ios</code>, <code>js</code>,
-<code>linux</code>, <code>netbsd</code>, <code>openbsd</code>,
-<code>plan9</code>, <code>solaris</code>, <code>wasip1</code>,
-and <code>windows</code>.
-</p>
+    <p>
+      As opções para <code>$GOOS</code> são <code>android</code>,
+      <code>darwin</code>, <code>dragonfly</code>, <code>freebsd</code>,
+      <code>illumos</code>, <code>ios</code>, <code>js</code>, <code>linux</code>,
+      <code>netbsd</code>, <code>openbsd</code>, <code>plan9</code>,
+      <code>solaris</code>, <code>wasip1</code> e <code>windows</code>.
+    </p>
 
-<p>
-Choices for <code>$GOARCH</code> are
-<code>amd64</code> (64-bit x86, the most mature port),
-<code>386</code> (32-bit x86), <code>arm</code> (32-bit ARM), <code>arm64</code> (64-bit ARM),
-<code>ppc64le</code> (PowerPC 64-bit, little-endian), <code>ppc64</code> (PowerPC 64-bit, big-endian),
-<code>mips64le</code> (MIPS 64-bit, little-endian), <code>mips64</code> (MIPS 64-bit, big-endian),
-<code>mipsle</code> (MIPS 32-bit, little-endian), <code>mips</code> (MIPS 32-bit, big-endian),
-<code>s390x</code> (IBM System z 64-bit, big-endian), and
-<code>wasm</code> (WebAssembly 32-bit).
-</p>
+    <p>
+      As opções para <code>$GOARCH</code> são <code>amd64</code> (x86 de 64 bits,
+      o port mais maduro), <code>386</code> (x86 de 32 bits), <code>arm</code>
+      (ARM de 32 bits), <code>arm64</code> (ARM de 64 bits), <code>ppc64le</code>
+      (PowerPC de 64 bits, little-endian), <code>ppc64</code> (PowerPC de 64 bits,
+      big-endian), <code>mips64le</code> (MIPS de 64 bits, little-endian),
+      <code>mips64</code> (MIPS de 64 bits, big-endian), <code>mipsle</code> (MIPS
+      de 32 bits, little-endian), <code>mips</code> (MIPS de 32 bits, big-endian),
+      <code>s390x</code> (IBM System z de 64 bits, big-endian) e <code>wasm</code>
+      (WebAssembly de 32 bits).
+    </p>
 
-<p>
-The valid combinations of <code>$GOOS</code> and <code>$GOARCH</code> are:
-</p>
+    <p>
+      As combinações válidas de <code>$GOOS</code> e <code>$GOARCH</code> são:
+    </p>
 
-<table cellpadding="0">
-<tr>
-<th width="50"></th><th align="left" width="100"><code>$GOOS</code></th> <th align="left" width="100"><code>$GOARCH</code></th>
-</tr>
-<tr>
-<td></td><td><code>aix</code></td> <td><code>ppc64</code></td>
-</tr>
-<tr>
-<td></td><td><code>android</code></td> <td><code>386</code></td>
-</tr>
-<tr>
-<td></td><td><code>android</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>android</code></td> <td><code>arm</code></td>
-</tr>
-<tr>
-<td></td><td><code>android</code></td> <td><code>arm64</code></td>
-</tr>
-<tr>
-<td></td><td><code>darwin</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>darwin</code></td> <td><code>arm64</code></td>
-</tr>
-<tr>
-<td></td><td><code>dragonfly</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>freebsd</code></td> <td><code>386</code></td>
-</tr>
-<tr>
-<td></td><td><code>freebsd</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>freebsd</code></td> <td><code>arm</code></td>
-</tr>
-<tr>
-<td></td><td><code>illumos</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>ios</code></td> <td><code>arm64</code></td>
-</tr>
-<tr>
-<td></td><td><code>js</code></td> <td><code>wasm</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>386</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>arm</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>arm64</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>loong64</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>mips</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>mipsle</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>mips64</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>mips64le</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>ppc64</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>ppc64le</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>riscv64</code></td>
-</tr>
-<tr>
-<td></td><td><code>linux</code></td> <td><code>s390x</code></td>
-</tr>
-<tr>
-<td></td><td><code>netbsd</code></td> <td><code>386</code></td>
-</tr>
-<tr>
-<td></td><td><code>netbsd</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>netbsd</code></td> <td><code>arm</code></td>
-</tr>
-<tr>
-<td></td><td><code>openbsd</code></td> <td><code>386</code></td>
-</tr>
-<tr>
-<td></td><td><code>openbsd</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>openbsd</code></td> <td><code>arm</code></td>
-</tr>
-<tr>
-<td></td><td><code>openbsd</code></td> <td><code>arm64</code></td>
-</tr>
-<tr>
-<td></td><td><code>plan9</code></td> <td><code>386</code></td>
-</tr>
-<tr>
-<td></td><td><code>plan9</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>plan9</code></td> <td><code>arm</code></td>
-</tr>
-<tr>
-<td></td><td><code>solaris</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>wasip1</code></td> <td><code>wasm</code></td>
-</tr>
-<tr>
-<td></td><td><code>windows</code></td> <td><code>386</code></td>
-</tr>
-<tr>
-<td></td><td><code>windows</code></td> <td><code>amd64</code></td>
-</tr>
-<tr>
-<td></td><td><code>windows</code></td> <td><code>arm</code></td>
-</tr>
-<tr>
-<td></td><td><code>windows</code></td> <td><code>arm64</code></td>
-</tr>
-</table>
+    <table cellpadding="0">
+      <tr>
+        <th width="50"></th>
+        <th align="left" width="100"><code>$GOOS</code></th>
+        <th align="left" width="100"><code>$GOARCH</code></th>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>aix</code></td>
+        <td><code>ppc64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>android</code></td>
+        <td><code>386</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>android</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>android</code></td>
+        <td><code>arm</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>android</code></td>
+        <td><code>arm64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>darwin</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>darwin</code></td>
+        <td><code>arm64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>dragonfly</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>freebsd</code></td>
+        <td><code>386</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>freebsd</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>freebsd</code></td>
+        <td><code>arm</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>illumos</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>ios</code></td>
+        <td><code>arm64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>js</code></td>
+        <td><code>wasm</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>386</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>arm</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>arm64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>loong64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>mips</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>mipsle</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>mips64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>mips64le</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>ppc64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>ppc64le</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>riscv64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>linux</code></td>
+        <td><code>s390x</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>netbsd</code></td>
+        <td><code>386</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>netbsd</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>netbsd</code></td>
+        <td><code>arm</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>openbsd</code></td>
+        <td><code>386</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>openbsd</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>openbsd</code></td>
+        <td><code>arm</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>openbsd</code></td>
+        <td><code>arm64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>plan9</code></td>
+        <td><code>386</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>plan9</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>plan9</code></td>
+        <td><code>arm</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>solaris</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>wasip1</code></td>
+        <td><code>wasm</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>windows</code></td>
+        <td><code>386</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>windows</code></td>
+        <td><code>amd64</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>windows</code></td>
+        <td><code>arm</code></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><code>windows</code></td>
+        <td><code>arm64</code></td>
+      </tr>
+    </table>
+  </li>
 
-<li><code>$GOHOSTOS</code> and <code>$GOHOSTARCH</code>
-<p>
-The name of the host operating system and compilation architecture.
-These default to the local system's operating system and
-architecture.
-</p>
+  <li>
+    <code>$GOHOSTOS</code> e <code>$GOHOSTARCH</code>.
+    <p>
+      O nome do sistema operacional e da arquitetura de compilação do host.
+      O padrão é o sistema operacional e a arquitetura do sistema local.
+    </p>
 
-<p>
-Valid choices are the same as for <code>$GOOS</code> and
-<code>$GOARCH</code>, listed above.
-The specified values must be compatible with the local system.
-For example, you should not set <code>$GOHOSTARCH</code> to
-<code>arm</code> on an x86 system.
-</p>
+    <p>
+      As opções válidas são as mesmas de <code>$GOOS</code> e
+      <code>$GOARCH</code>, listadas acima.
+      Os valores especificados devem ser compatíveis com o sistema local.
+      Por exemplo, você não deve definir <code>$GOHOSTARCH</code> como
+      <code>arm</code> em um sistema x86.
+    </p>
+  </li>
 
-<li><code>$GO386</code> (for <code>386</code> only, defaults to <code>sse2</code>)
-<p>
-This variable controls how gc implements floating point computations.
-</p>
-<ul>
-	<li><code>GO386=softfloat</code>: use software floating point operations; should support all x86 chips (Pentium MMX or later).</li>
-	<li><code>GO386=sse2</code>: use SSE2 for floating point operations; has better performance but only available on Pentium 4/Opteron/Athlon 64 or later.</li>
+  <li>
+    <code>$GO386</code> (somente para <code>386</code>, o padrão é
+    <code>sse2</code>).
+    <p>
+      Esta variável controla como o gc implementa cálculos de ponto flutuante.
+    </p>
+    <ul>
+      <li>
+        <code>GO386=softfloat</code>: usa operações de ponto flutuante de
+        software; deve suportar todos os chips x86 (Pentium MMX ou posterior).
+      </li>
+      <li>
+        <code>GO386=sse2</code>: usa SSE2 para operações de ponto flutuante; tem
+        melhor desempenho, mas está disponível apenas em Pentium
+        4/Opteron/Athlon 64 ou posterior.
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <code>$GOARM</code> (somente para <code>arm</code>; o padrão é detectado
+    automaticamente se estiver compilando no processador alvo, 7, caso
+    contrário).
+    <p>
+      Isso define a versão da arquitetura do coprocessador de ponto flutuante
+      ARM que o runtime deve ter como alvo.
+      Se você estiver compilando no sistema alvo, seu valor será detectado
+      automaticamente.
+    </p>
+    <ul>
+      <li>
+        <code>GOARM=5</code>: usa ponto flutuante de software; quando a CPU não
+        tiver coprocessador VFP.
+      </li>
+      <li>
+        <code>GOARM=6</code>: usa apenas VFPv1; padrão se estiver compilando de
+        forma cruzada; geralmente núcleos ARM11 ou superiores (VFPv2 ou superior
+        também são suportados).
+      </li>
+      <li>
+        <code>GOARM=7</code>: usa VFPv3; geralmente núcleos Cortex-A.
+      </li>
+    </ul>
+    <p>
+      Em caso de dúvida, deixe esta variável indefinida e ajuste-a, se
+      necessário, ao executar o executável Go pela primeira vez.
+      A página <a href="/wiki/GoArm">GoARM</a> na
+      <a href="/wiki">wiki da comunidade Go</a> contém mais detalhes sobre o
+      suporte ARM do Go.
+    </p>
+  </li>
+
+  <li>
+    <code>$GOAMD64</code> (somente para <code>amd64</code>; o padrão é
+    <code>v1</code>).
+    <p>
+      Isso define o nível de microarquitetura para o qual compilar.
+      Os valores válidos são <code>v1</code> (padrão), <code>v2</code>,
+      <code>v3</code>, <code>v4</code>.
+      Consulte
+      <a href="/wiki/MinimumRequirements#amd64">
+        a página MinimumRequirements da wiki do Go
+      </a>
+      para obter mais informações.
+    </p>
+  </li>
+
+  <li>
+    <code>$GOMIPS</code> (apenas para <code>mips</code> e <code>mipsle</code>)
+    <br>
+    <code>$GOMIPS64</code> (apenas para <code>mips64</code> e
+    <code>mips64le</code>).
+    <p>
+      Estas variáveis definem se as instruções de ponto flutuante devem ser
+      usadas.
+      Defina como "<code>hardfloat</code>" para usar instruções de ponto
+      flutuante; este é o padrão.
+      Defina como "<code>softfloat</code>" para usar ponto flutuante suave.
+    </p>
+  </li>
+
+  <li>
+    <code>$GOPPC64</code> (apenas para <code>ppc64</code> e
+    <code>ppc64le</code>).
+    <p>
+      Esta variável define o nível do processador (ou seja, a versão da
+      Arquitetura do Conjunto de Instruções) para o qual o compilador será
+      direcionado.
+      O padrão é <code>power8</code>.
+    </p>
+    <ul>
+      <li><code>GOPPC64=power8</code>: gera instruções ISA v2.07.</li>
+      <li><code>GOPPC64=power9</code>: gera instruções ISA v3.00.</li>
+    </ul>
+  </li>
+
+  <li>
+    <code>$GORISCV64</code> (somente para <code>riscv64</code>).
+    <p>
+      Esta variável define o profile da aplicação RISC-V em modo de usuário para
+      o qual compilar.
+      O padrão é <code>rva20u64</code>.
+    </p>
+    <ul>
+      <li>
+        <code>GORISCV64=rva20u64</code>: usa apenas extensões RISC-V
+        obrigatórias no profile
+        <a href="https://github.com/riscv/riscv-profiles/blob/main/src/profiles.adoc#51-rva20u64-profile">RVA20U64</a>.
+      </li>
+      <li>
+        <code>GORISCV64=rva22u64</code>: usa apenas extensões RISC-V
+        obrigatórias no profile
+        <a href="https://github.com/riscv/riscv-profiles/blob/main/src/profiles.adoc#rva22u64-profile">RVA22U64</a>.
+      </li>
+      <li>
+        <code>GORISCV64=rva23u64</code>: usa apenas extensões RISC-V
+        obrigatórios no profile
+        <a href="https://github.com/riscv/riscv-profiles/blob/main/src/rva23-profile.adoc#rva23u64-profile">RVA23U64</a>.
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <code>$GOWASM</code> (somente para <code>wasm</code>).
+    <p>
+      Esta variável é uma lista separada por vírgulas de
+      <a href="https://github.com/WebAssembly/proposals">
+        recursos experimentais do WebAssembly
+      </a>
+      que o binário compilado do WebAssembly tem permissão para usar.
+      O padrão é não usar recursos experimentais.
+    </p>
+    <ul>
+      <li>
+        <code>GOWASM=satconv</code>: gera
+        <a href="https://github.com/WebAssembly/nontrapping-float-to-int-conversions/blob/master/proposals/nontrapping-float-to-int-conversion/Overview.md">
+          conversões saturadas (sem captura) de float para int
+        </a>
+      </li>
+      <li>
+        <code>GOWASM=signext</code>: gera
+        <a href="https://github.com/WebAssembly/sign-extension-ops/blob/master/proposals/sign-extension-ops/Overview.md">
+          operadores de extensão de sinal
+        </a>
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-
-<li><code>$GOARM</code> (for <code>arm</code> only; default is auto-detected if building
-on the target processor, 7 if not)
-<p>
-This sets the ARM floating point co-processor architecture version the run-time
-should target. If you are compiling on the target system, its value will be auto-detected.
-</p>
-<ul>
-	<li><code>GOARM=5</code>: use software floating point; when CPU doesn't have VFP co-processor</li>
-	<li><code>GOARM=6</code>: use VFPv1 only; default if cross compiling; usually ARM11 or better cores (VFPv2 or better is also supported)</li>
-	<li><code>GOARM=7</code>: use VFPv3; usually Cortex-A cores</li>
-</ul>
-<p>
-If in doubt, leave this variable unset, and adjust it if required
-when you first run the Go executable.
-The <a href="/wiki/GoArm">GoARM</a> page
-on the <a href="/wiki">Go community wiki</a>
-contains further details regarding Go's ARM support.
-</p>
-</li>
-
-<li><code>$GOAMD64</code> (for <code>amd64</code> only;
-default is <code>v1</code>)
-<p>
-This sets the microarchitecture level for which to compile.
-Valid values are <code>v1</code> (default), <code>v2</code>, <code>v3</code>,
-<code>v4</code>.
-See <a href="/wiki/MinimumRequirements#amd64">the Go wiki
-MinimumRequirements page</a> for more information.
-</p>
-</li>
-
-<li><code>$GOMIPS</code> (for <code>mips</code> and <code>mipsle</code> only) <br> <code>$GOMIPS64</code> (for <code>mips64</code> and <code>mips64le</code> only)
-<p>
-	These variables set whether to use floating point instructions. Set to "<code>hardfloat</code>" to use floating point instructions; this is the default.  Set to "<code>softfloat</code>" to use soft floating point.
-</p>
-</li>
-
-<li><code>$GOPPC64</code> (for <code>ppc64</code> and <code>ppc64le</code> only)
-<p>
-This variable sets the processor level (i.e. Instruction Set Architecture version)
-for which the compiler will target. The default is <code>power8</code>.
-</p>
-<ul>
-	<li><code>GOPPC64=power8</code>: generate ISA v2.07 instructions</li>
-	<li><code>GOPPC64=power9</code>: generate ISA v3.00 instructions</li>
-</ul>
-</li>
-
-<li><code>$GORISCV64</code> (for <code>riscv64</code> only)
-<p>
-This variable sets the RISC-V user-mode application profile for which to compile. The default is <code>rva20u64</code>.
-</p>
-<ul>
-	<li><code>GORISCV64=rva20u64</code>: only use RISC-V extensions that are mandatory in the <a href="https://github.com/riscv/riscv-profiles/blob/main/src/profiles.adoc#51-rva20u64-profile">RVA20U64</a> profile</li>
-	<li><code>GORISCV64=rva22u64</code>: only use RISC-V extensions that are mandatory in the <a href="https://github.com/riscv/riscv-profiles/blob/main/src/profiles.adoc#rva22u64-profile">RVA22U64</a> profile</li>
-	<li><code>GORISCV64=rva23u64</code>: only use RISC-V extensions that are mandatory in the <a href="https://github.com/riscv/riscv-profiles/blob/main/src/rva23-profile.adoc#rva23u64-profile">RVA23U64</a> profile</li>
-</ul>
-</li>
-
-<li><code>$GOWASM</code> (for <code>wasm</code> only)
-	<p>
-	This variable is a comma separated list of <a href="https://github.com/WebAssembly/proposals">experimental WebAssembly features</a> that the compiled WebAssembly binary is allowed to use.
-	The default is to use no experimental features.
-	</p>
-	<ul>
-		<li><code>GOWASM=satconv</code>: generate <a href="https://github.com/WebAssembly/nontrapping-float-to-int-conversions/blob/master/proposals/nontrapping-float-to-int-conversion/Overview.md">saturating (non-trapping) float-to-int conversions</a></li>
-		<li><code>GOWASM=signext</code>: generate <a href="https://github.com/WebAssembly/sign-extension-ops/blob/master/proposals/sign-extension-ops/Overview.md">sign-extension operators</a></li>
-	</ul>
-</li>
-
-</ul>
 
 <p>
-Note that <code>$GOARCH</code> and <code>$GOOS</code> identify the
-<em>target</em> environment, not the environment you are running on.
-In effect, you are always cross-compiling.
-By architecture, we mean the kind of binaries
-that the target environment can run:
-an x86-64 system running a 32-bit-only operating system
-must set <code>GOARCH</code> to <code>386</code>,
-not <code>amd64</code>.
+  Observe que <code>$GOARCH</code> e <code>$GOOS</code> identificam o ambiente
+  <em>alvo</em>, não o ambiente em que você está executando.
+  Na prática, você está sempre realizando uma compilação cruzada.
+  Por arquitetura, queremos dizer o tipo de binários que o ambiente alvo pode
+  executar: um sistema x86-64 executando um sistema operacional somente de 32
+  bits deve definir <code>GOARCH</code> como <code>386</code>, não
+  <code>amd64</code>.
 </p>
 
 <p>
-If you choose to override the defaults,
-set these variables in your shell profile (<code>$HOME/.bashrc</code>,
-<code>$HOME/.profile</code>, or equivalent). The settings might look
-something like this:
+  Se você optar por substituir os padrões, defina essas variáveis no seu perfil
+  de shell (<code>$HOME/.bashrc</code>, <code>$HOME/.profile</code> ou
+  equivalente).
+  As configurações podem ser algo como isto:
 </p>
 
 <pre>
@@ -811,6 +1023,6 @@ export GOOS=linux
 </pre>
 
 <p>
-although, to reiterate, none of these variables needs to be set to build,
-install, and develop the Go tree.
+  No entanto, para reiterar, nenhuma dessas variáveis precisa ser definida para compilar,
+  instalar e desenvolver a árvore Go.
 </p>
