@@ -257,13 +257,13 @@ $ GOROOT_BOOTSTRAP=/usr ./make.bash
   Especificamente, não tente reutilizar este git clone na etapa posterior
   chamada "Fazer o fetch do repositório".
   A toolchain de bootstrap do go1.4 <b>deve ser capaz</b> de percorrer
-  corretamente os códigos-fonte do go1.4 que ela presume estarem presentes nesta
+  corretamente o código-fonte do go1.4 que ela presume estarem presentes nesta
   raiz do repositório.
 </p>
 
 <p>
-  Observe que o Go 1.4 não roda em todos os sistemas que as versões posteriores
-  do Go rodam.
+  Note que o Go 1.4 não roda em todos os sistemas que as versões posteriores do
+  Go rodam.
   Em particular, o Go 1.4 não oferece suporte às versões atuais do macOS.
   Nesses sistemas, a toolchain de bootstrap deve ser obtida usando um dos outros
   métodos.
@@ -321,8 +321,8 @@ $ git checkout <span class="versionTag"><i>&lt;tag&gt;</i></span>
   O Go será instalado no diretório onde for feito o checkout.
   Por exemplo, se o checkout do Go for feito em <code>$HOME/goroot</code>, os
   executáveis serão instalados em <code>$HOME/goroot/bin</code>.
-  O diretório pode ter qualquer nome, mas observe que se o checkout do Go for
-  feito em <code>$HOME/go</code>, ele entrará em conflito com o local padrão de
+  O diretório pode ter qualquer nome, mas note que se o checkout do Go for feito
+  em <code>$HOME/go</code>, ele entrará em conflito com o local padrão de
   <code>$GOPATH</code>.
   Consulte <a href="#gopath"><code>GOPATH</code></a> abaixo.
 </p>
@@ -571,7 +571,7 @@ $ ./all.bash
     </p>
 
     <p>
-      Observe que os executáveis da distribuição Go são instalados em
+      Note que os executáveis da distribuição Go são instalados em
       <code>$GOROOT/bin</code> (para executáveis invocados por pessoas) ou
       <code>$GOTOOLDIR</code> (para executáveis invocados pelo comando go; o
       padrão é <code>$GOROOT/pkg/$GOOS_$GOARCH</code>) em vez de
@@ -1001,7 +1001,7 @@ $ ./all.bash
 </ul>
 
 <p>
-  Observe que <code>$GOARCH</code> e <code>$GOOS</code> identificam o ambiente
+  Note que <code>$GOARCH</code> e <code>$GOOS</code> identificam o ambiente
   <em>alvo</em>, não o ambiente em que você está executando.
   Na prática, você está sempre realizando uma compilação cruzada.
   Por arquitetura, queremos dizer o tipo de binários que o ambiente alvo pode

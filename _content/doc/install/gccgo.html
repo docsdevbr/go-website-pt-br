@@ -27,20 +27,20 @@ status: ready
 </p>
 
 <p>
-  Observe que o gccgo não é o compilador <code>gc</code>; consulte as instruções
-  de <a href="/doc/install">Instalando o Go</a> para esse compilador.
+  Note que o gccgo não é o compilador <code>gc</code>; consulte as instruções de
+  <a href="/doc/install">Instalando o Go</a> para esse compilador.
 </p>
 
 <h2 id="Releases">Versões</h2>
 
 <p>
   A maneira mais simples de instalar o gccgo é instalar uma versão binária do
-  GCC compilada para incluir suporte a Go.
+  GCC compilada para incluir suporte ao Go.
   As versões binárias do GCC estão disponíveis em
   <a href="https://gcc.gnu.org/install/binaries.html">vários sites</a> e
   normalmente são incluídas como parte de distribuições GNU/Linux.
-  Esperamos que a maioria das pessoas que criam esses binários incluam suporte a
-  Go.
+  Esperamos que a maioria das pessoas que criam esses binários incluam suporte
+  ao Go.
 </p>
 
 <p>
@@ -60,7 +60,7 @@ status: ready
 
 <p>
   As versões do GCC 5 incluem uma implementação completa das bibliotecas de
-  pessoa usuária do Go 1.4.
+  usuário do Go 1.4.
   O runtime do Go 1.4 não está totalmente integrado, mas isso não deve ser
   visível para programas em Go.
 </p>
@@ -68,8 +68,8 @@ status: ready
 <p>
   As versões do GCC 6 incluem uma implementação completa das bibliotecas de
   usuário do Go 1.6.1.
-  O tempo de execução do Go 1.6 não está totalmente integrado, mas isso não deve
-  ser visível para programas em Go.
+  O runtime do Go 1.6 não está totalmente integrado, mas isso não deve ser
+  visível para programas em Go.
 </p>
 
 <p>
@@ -100,7 +100,7 @@ status: ready
 <p>
   As versões do GCC 12 e 13 incluem uma implementação completa da biblioteca
   padrão Go 1.18.
-  No entanto, o GCC ainda não inclui suporte para generics.
+  No entanto, o GCC ainda não inclui suporte a generics.
 </p>
 
 <h2 id="Source_code">Código-fonte</h2>
@@ -113,16 +113,17 @@ status: ready
     instruções para obter o código-fonte do GCC
   </a>.
   O código-fonte do gccgo está incluído.
-  Para sua conveniência, uma versão estável do suporte a Go está disponível no
+  Para sua conveniência, uma versão estável do suporte ao Go está disponível no
   branch <code>devel/gccgo</code> do repositório principal de código do GCC:
   <code>git://gcc.gnu.org/git/gcc.git</code>.
-  Este branch é atualizado periodicamente com fontes estáveis do compilador Go.
+  Este branch é atualizado periodicamente com código-fonte estável do compilador
+  Go.
 </p>
 
 <p>
-  Observe que, embora <code>gcc.gnu.org</code> seja a maneira mais conveniente
-  de obter o código-fonte para o frontend Go, não é onde o código-fonte
-  principal fica.
+  Note que, embora <code>gcc.gnu.org</code> seja a maneira mais conveniente de
+  obter o código-fonte para o frontend Go, não é onde o código-fonte principal
+  fica.
   Se você quiser contribuir com alterações no compilador frontend do Go,
   consulte <a href="/doc/gccgo_contribute.html">Contribuindo para o gccgo</a>.
 </p>
@@ -137,7 +138,7 @@ status: ready
   <code>--enable-languages=c,c++,go</code> (junto com outras linguagens que você
   queira compilar).
   Se você tem como alvo um x86 de 32 bits, então você vai querer compilar o
-  gccgo para que, por padrão, suporte a instruções de comparação e troca
+  gccgo para que, por padrão, suporte instruções de comparação e troca
   bloqueadas; faça isso também usando a opção <code>configure</code>
   <code>--with-arch=i586</code> (ou uma arquitetura mais recente, dependendo de
   onde você precisa que seus programas sejam executados).
@@ -154,12 +155,11 @@ status: ready
   Isso permite que os programas executem muito mais goroutines, já que cada
   goroutine pode usar uma pilha relativamente pequena.
   Para isso, é necessário usar o gold linker versão 2.22 ou posterior.
-  Você pode instalar o GNU binutils 2.22 ou posterior ou pode compilar o gold
-  você mesmo.
+  Você pode instalar o GNU binutils 2.22 ou posterior ou pode compilar o gold.
 </p>
 
 <p>
-  Para compilar o gold você mesmo, compile o GNU binutils usando
+  Para compilar o gold, compile o GNU binutils usando
   <code>--enable-gold=default</code> ao executar o script
   <code>configure</code>.
   Antes de compilar, você deve instalar os pacotes flex e bison.
@@ -190,7 +190,7 @@ make install
   É importante instalar todos os pré-requisitos antes de executar o script
   <code>configure</code> do gcc.
   As bibliotecas pré-requisitos podem ser baixadas facilmente usando o script
-  <code>contrib/download_prerequisites</code> nos códigos-fonte do GCC.
+  <code>contrib/download_prerequisites</code> no código-fonte do GCC.
 </p>
 
 <h3 id="Build_commands">Comandos de compilação</h3>
@@ -268,7 +268,7 @@ gccgo -o file file.o
 
   <li>
     <p>
-      Passando a opção <code>-Wl,-R</code> ao fazer uma vinculação (substitua
+      Passando a opção <code>-Wl,-R</code> ao fazer a vinculação (substitua
       lib por lib64 se apropriado para o seu sistema):
     </p>
 
@@ -362,7 +362,7 @@ objcopy -j .go_export FILE.o FILE.gox
 <p>
   O compilador gccgo não registra atualmente (15/06/2015) o nome do arquivo dos
   pacotes importados no arquivo objeto.
-  Você deve organizar para que os dados importados sejam vinculados ao programa.
+  Você precisa fazer com que os dados importados sejam vinculados ao programa.
   Novamente, isso não é necessário ao compilar com o comando go.
 </p>
 
@@ -448,7 +448,7 @@ struct __go_slice {
   O primeiro campo na struct aponta para o código da função, que será
   equivalente a um ponteiro para uma função C cujos tipos de parâmetros são
   equivalentes, com um parâmetro final adicional.
-  O parâmetro final é o closure, e o argumento a ser passado é um ponteiro para
+  O parâmetro final é a closure, e o argumento a ser passado é um ponteiro para
   a struct da função Go.
   Quando uma função Go retorna mais de um valor, a função C retorna uma struct.
   Por exemplo, estas funções são aproximadamente equivalentes:
@@ -491,7 +491,7 @@ struct { int i; float64 f; } CFunction(int, void*)
 <p>
   O código Go pode chamar funções C diretamente usando uma extensão Go
   implementada em gccgo: uma declaração de função pode ser precedida por
-  <code>//extern NAME</code>.
+  <code>//extern NOME</code>.
   Por exemplo, aqui está como a função C <code>open</code> pode ser declarada em
   Go:
 </p>
@@ -520,7 +520,7 @@ i := c_open(&amp;name[0], syscall.O_RDONLY, 0);
 </p>
 
 <p>
-  Observe que, se a função C puder bloquear, como em uma chamada para
+  Note que, se a função C puder bloquear, como em uma chamada para
   <code>read</code>, chamar a função C poderá bloquear o programa em Go.
   A menos que você tenha uma compreensão clara do que está fazendo, todas as
   chamadas entre C e Go devem ser implementadas por meio de cgo ou SWIG, como
@@ -554,14 +554,14 @@ extern int go_function(int) __asm__ ("prefixo.pacote.NomeDaFunção");
 
 <p>
   Compile seu código C normalmente e adicione a opção
-  <code>-fdump-go-spec=<var>FILENAME</var></code>.
-  Isso criará o arquivo <code><var>FILENAME</var></code> como um efeito
+  <code>-fdump-go-spec=<var>NOME_DO_ARQUIVO</var></code>.
+  Isso criará o arquivo <code><var>NOME_DO_ARQUIVO</var></code> como um efeito
   colateral da compilação.
   Este arquivo conterá declarações em Go para os tipos, variáveis e funções
   declaradas no código C.
   Tipos em C que não podem ser representados em Go serão registrados como
   comentários no código Go.
-  O arquivo gerado não terá uma declaração de <code>package</code>, mas pode ser
+  O arquivo gerado não terá uma declaração <code>package</code>, mas pode ser
   compilado diretamente pelo gccgo.
 </p>
 
