@@ -1,102 +1,136 @@
+<!--
+Copyright (c) 2009 The Go Authors.
+
+Documentation licensed under the 3-Clause BSD License.
+The original work was translated from English into Brazilian Portuguese.
+https://github.com/golang/website/blob/master/LICENSE
+
+source_url: https://github.com/golang/website/blob/master/_content/doc/tutorial/index.html
+revision: 496c979d265dbb9c1ff27f7f83fd293ad126552b
+status: ready
+-->
+
 <!--{
-    "Title": "Tutorials",
+    "Title": "Tutoriais",
     "Breadcrumb": true
 }-->
 
-<p>If you're new to a part of Go, take a look at the tutorials linked below.</p>
+<p>
+  Se você é uma pessoa nova em alguma parte do Go, dê uma olhada nos tutoriais
+  abaixo.
+</p>
 
 <p>
-  If you haven't installed Go yet, see
-  <a href="/doc/install">Download and install</a>.
+  Se você ainda não instalou o Go, consulte
+  <a href="/doc/install">Baixe e instale</a>.
 </p>
 
 <table id="tutorials-list" class="DocTable">
   <thead>
     <tr class="DocTable-head">
       <th class="DocTable-cell" width="20%">Tutorial</th>
-      <th class="DocTable-cell">Description</th>
+      <th class="DocTable-cell">Descrição</th>
     </tr>
   </thead>
   <tbody>
     <tr class="DocTable-row">
       <td class="DocTable-cell">
-        <a href="/doc/tutorial/getting-started.html">Getting started</a>
+        <a href="/doc/tutorial/getting-started.html">Começando</a>
       </td>
-      <td class="DocTable-cell">Say Hello, World with Go.</td>
+      <td class="DocTable-cell">Diga Olá, mundo com Go.</td>
     </tr>
     <tr class="DocTable-row">
       <td class="DocTable-cell">
-        <a href="/doc/tutorial/create-module.html">Create a module</a>
+        <a href="/doc/tutorial/create-module.html">Crie um módulo</a>
       </td>
       <td class="DocTable-cell">
-        A multi-part tutorial that introduces common programming language
-        features from the Go perspective.
+        Um tutorial em várias partes que apresenta recursos comuns de linguagens
+        de programação da perspectiva do Go.
       </td>
     </tr>
     <tr class="DocTable-row">
       <td class="DocTable-cell">
-        <a href="/doc/tutorial/workspaces.html">Getting started with multi-module workspaces</a>
+        <a href="/doc/tutorial/workspaces.html">
+          Introdução aos espaços de trabalho multimódulos
+        </a>
       </td>
       <td class="DocTable-cell">
-        Introduces the basics of creating and using multi-module workspaces in Go.
-        Multi-module workspaces are useful for making changes across multiple modules.
+        Apresenta os conceitos básicos de criação e utilização de espaços de
+        trabalho multimódulos em Go.
+        Espaços de trabalho multimódulos são úteis para fazer alterações em
+        vários módulos.
       </td>
     </tr>
     <tr class="DocTable-row">
         <td class="DocTable-cell">
-          <a href="/doc/tutorial/database-access">Accessing a relational
-            database</a>
+          <a href="/doc/tutorial/database-access">
+            Acessando um banco de dados relacional
+          </a>
         </td>
-        <td class="DocTable-cell">Introduces the basics of accessing a database
-            using the standard library.</td>
+      <td class="DocTable-cell">
+        Apresenta os conceitos básicos de acesso a um banco de dados usando a
+        biblioteca padrão.
+      </td>
       </tr>
     <tr class="DocTable-row">
       <td class="DocTable-cell">
-        <a href="/doc/tutorial/web-service-gin">Developing a RESTful
-            API with Go and Gin</a>
+        <a href="/doc/tutorial/web-service-gin">
+          Desenvolvendo uma API RESTful com Go e Gin
+        </a>
       </td>
-      <td class="DocTable-cell">Introduces the basics of writing a RESTful web
-		service API with Go and the Gin Web Framework.</td>
+      <td class="DocTable-cell">
+        Apresenta os conceitos básicos para escrever uma API de serviço web
+        RESTful com Go e o framework web Gin.
+      </td>
     </tr>
     <tr class="DocTable-row">
       <td class="DocTable-cell">
-        <a href="/doc/tutorial/generics">Getting started with generics</a>
+        <a href="/doc/tutorial/generics">Introdução a generics</a>
       </td>
-      <td class="DocTable-cell">Introduces the basics of generics in Go.
-          With generics, you can declare and use functions or types that are
-          written to work with any of a set of types provided by calling
-          code.</td>
+      <td class="DocTable-cell">
+        Apresenta os conceitos básicos de generics em Go.
+        Com generics, você pode declarar e usar funções ou tipos que são
+        escritos para funcionar com qualquer um de um conjunto de tipos
+        fornecido pela código que faz a chamada.
+      </td>
     </tr>
     <tr class="DocTable-row">
       <td class="DocTable-cell">
-        <a href="/doc/tutorial/fuzz">Getting started with fuzzing</a>
+        <a href="/doc/tutorial/fuzz">Introdução ao fuzzing</a>
       </td>
-      <td class="DocTable-cell">Introduces the basics of fuzzing in Go.
-          Fuzzing can generate inputs to your tests that can catch edge cases
-          and security issues that you may have missed.</td>
+      <td class="DocTable-cell">
+        Apresenta os conceitos básicos de fuzzing em Go.
+        O fuzzing pode gerar entradas para seus testes que podem identificar
+        casos extremos e problemas de segurança que você pode ter perdido.
+      </td>
     </tr>
     <tr class="DocTable-row">
       <td class="DocTable-cell">
-        <a href="/doc/tutorial/govulncheck">Getting started with govulncheck</a>
+        <a href="/doc/tutorial/govulncheck">Introdução ao govulncheck</a>
       </td>
-      <td class="DocTable-cell">Introduces how to find and fix vulnerabilities
-        with govulncheck. Govulncheck reports known vulnerabilities that affect
-        Go code.</td>
+      <td class="DocTable-cell">
+        Apresenta como encontrar e corrigir vulnerabilidades com o govulncheck.
+        O govulncheck relata vulnerabilidades conhecidas que afetam o código Go.
+      </td>
     </tr>
     <tr class="DocTable-row">
       <td class="DocTable-cell">
-        <a href="/doc/tutorial/govulncheck-ide">Find and fix vulnerable dependencies with VS Code Go</a>
+        <a href="/doc/tutorial/govulncheck-ide">
+          Encontre e corrija dependências vulneráveis com o VS Code Go
+        </a>
       </td>
-      <td class="DocTable-cell">Introduces how to find and fix vulnerable
-        dependencies directly from your IDE with VS Code Go and Vim.</td>
+      <td class="DocTable-cell">
+        Apresenta como encontrar e corrigir dependências vulneráveis diretamente
+        da sua IDE com o VS Code Go e o Vim.
+      </td>
     </tr>
     <tr class="DocTable-row">
       <td class="DocTable-cell">
-        <a href="/tour/">A Tour of Go</a>
+        <a href="/tour/">Um tour pelo Go</a>
       </td>
       <td class="DocTable-cell">
-        An interactive introduction to Go: basic syntax and data structures;
-        methods and interfaces; and Go's concurrency primitives.
+        Uma introdução interativa ao Go: sintaxe básica e estruturas de dados;
+        métodos e interfaces; e primitivas de concorrência do Go.
       </td>
     </tr>
   </tbody>
