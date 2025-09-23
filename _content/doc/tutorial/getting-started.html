@@ -1,308 +1,314 @@
+<!--
+Copyright (c) 2009 The Go Authors.
+
+Documentation licensed under the 3-Clause BSD License.
+The original work was translated from English into Brazilian Portuguese.
+https://github.com/golang/website/blob/master/LICENSE
+
+source_url: https://github.com/golang/website/blob/master/_content/doc/tutorial/getting-started.html
+revision: 1d269baea75870afc28e595c7ecdc5e821193e8a
+status: ready
+-->
+
 <!--{
-    "Title": "Tutorial: Get started with Go",
+    "Title": "Tutorial: Introdução ao Go",
     "Breadcrumb": true
 }-->
 
 <p>
-  In this tutorial, you'll get a brief introduction to Go programming. Along the
-  way, you will:
+  Neste tutorial, você terá uma breve introdução à programação em Go.
+  Ao longo do caminho, você irá:
 </p>
 
 <ul>
-  <li>Install Go (if you haven't already).</li>
-  <li>Write some simple "Hello, world" code.</li>
-  <li>Use the <code>go</code> command to run your code.</li>
+  <li>Instalar o Go (se ainda não o fez).</li>
+  <li>Escrever um código simples "Olá, mundo".</li>
+  <li>Usar o comando <code>go</code> para executar seu código.</li>
   <li>
-    Use the Go package discovery tool to find packages you can use in your own
-    code.
+    Usar a ferramenta de descoberta de pacotes do Go para encontrar pacotes que
+    você pode usar em seu próprio código.
   </li>
-  <li>Call functions of an external module.</li>
+  <li>Chamar funções de um módulo externo.</li>
 </ul>
 
 <aside class="Note">
-  <strong>Note:</strong> For other tutorials, see
-  <a href="/doc/tutorial/index.html">Tutorials</a>.
+  <strong>Observação:</strong> Para outros tutoriais, consulte
+  <a href="/doc/tutorial/index.html">Tutoriais</a>.
 </aside>
 
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Pré-requisitos</h2>
 
 <ul>
   <li>
-    <strong>Some programming experience.</strong> The code here is pretty
-    simple, but it helps to know something about functions.
+    <strong>Alguma experiência em programação.</strong>
+    O código aqui é bem simples, mas ajuda saber um pouco sobre funções.
   </li>
   <li>
-    <strong>A tool to edit your code.</strong> Any text editor you have will
-    work fine. Most text editors have good support for Go. The most popular are
-    VSCode (free), GoLand (paid), and Vim (free).
+    <strong>Uma ferramenta para editar seu código.</strong>
+    Qualquer editor de texto que você tiver funcionará bem.
+    A maioria dos editores de texto tem bom suporte para Go.
+    Os mais populares são VSCode (gratuito), GoLand (pago) e Vim (gratuito).
   </li>
   <li>
-    <strong>A command terminal.</strong> Go works well using any terminal on
-    Linux and Mac, and on PowerShell or cmd in Windows.
+    <strong>Um terminal de comando.</strong>
+    Go funciona bem usando qualquer terminal no Linux e Mac, e no PowerShell ou
+    cmd no Windows.
   </li>
 </ul>
 
-<h2 id="install">Install Go</h2>
+<h2 id="install">Instale o Go</h2>
 
-<p>Just use the <a href="/doc/install">Download and install</a> steps.</p>
+<p>Basta seguir os passos de <a href="/doc/install">Baixe e instale</a>.</p>
 
-<h2 id="code">Write some code</h2>
+<h2 id="code">Escreva algum código</h2>
 
-<p>
-  Get started with Hello, World.
-</p>
+<p>Comece com o Olá, mundo.</p>
 
 <ol>
   <li>
-    Open a command prompt and cd to your home directory.
+    Abra um prompt de comando e acesse seu diretório inicial com o comando cd.
 
-    <p>
-      On Linux or Mac:
-    </p>
+    <p>No Linux ou Mac:</p>
 
-    <pre>
-cd
-</pre
-    >
+    <pre>cd</pre>
 
-    <p>
-      On Windows:
-    </p>
+    <p>No Windows:</p>
 
-    <pre>
-cd %HOMEPATH%
-</pre
-    >
+    <pre>cd %HOMEPATH%</pre>
   </li>
 
   <li>
-    Create a hello directory for your first Go source code.
+    Crie um diretório hello para seu primeiro código-fonte em Go.
 
-    <p>
-      For example, use the following commands:
-    </p>
+    <p>Por exemplo, use os seguintes comandos:</p>
 
     <pre>
-mkdir hello
-cd hello
-</pre
-    >
+    mkdir hello
+    cd hello
+    </pre>
   </li>
 
   <li>
-    Enable dependency tracking for your code.
+    Habilite o rastreamento de dependências para seu código.
 
     <p>
-      When your code imports packages contained in other modules, you manage
-      those dependencies through your code's own module. That module is defined
-      by a go.mod file that tracks the modules that provide those packages. That
-      go.mod file stays with your code, including in your source code
-      repository.
+      Quando seu código importa pacotes contidos em outros módulos, você
+      gerencia essas dependências por meio do próprio módulo do seu código.
+      Esse módulo é definido por um arquivo go.mod que rastreia os módulos que
+      fornecem esses pacotes.
+      Esse arquivo go.mod permanece com seu código, inclusive no repositório de
+      código-fonte.
     </p>
 
     <p>
-      To enable dependency tracking for your code by creating a go.mod file, run
-      the
-      <a href="/ref/mod#go-mod-init"><code>go mod init</code></a> command,
-        giving it the name of the module your code will be in. The name is the
-        module's module path.</p>
-    <p>In actual development, the module path will typically be the repository
-        location where your source code will be kept. For example, the module
-        path might be <code>github.com/mymodule</code>. If you plan to publish
-        your module for others to use, the module path <em>must</em> be a
-        location from which Go tools can download your module. For more about
-        naming a module with a module path, see
-        <a href="/doc/modules/managing-dependencies#naming_module">Managing
-            dependencies</a>.
+      Para habilitar o rastreamento de dependências para o seu código criando um
+      arquivo go.mod, execute o comando
+      <a href="/ref/mod#go-mod-init"><code>go mod init</code></a>,
+      fornecendo a ele o nome do módulo em que seu código estará.
+      O nome é o caminho do módulo.
     </p>
 
-      <p>For the purposes of this tutorial, just use
-          <code>example/hello</code>.
+    <p>
+      No desenvolvimento real, o caminho do módulo normalmente será o local do
+      repositório onde seu código-fonte será mantido.
+      Por exemplo, o caminho do módulo pode ser
+      <code>github.com/meu-modulo</code>.
+      Se você planeja publicar seu módulo para outras pessoas usarem, o caminho
+      do módulo <em>deve</em> ser um local de onde as ferramentas Go possam
+      baixar seu módulo.
+      Para mais informações sobre como nomear um módulo com um caminho de
+      módulo, consulte
+      <a href="/doc/modules/managing-dependencies#naming_module">
+        Gerenciando dependências
+      </a>.
+    </p>
+
+    <p>
+      Para os propósitos deste tutorial, use apenas <code>exemplo/ola</code>.
     </p>
 
     <pre>
-$ go mod init example/hello
-go: creating new go.mod: module example/hello
-</pre
-    >
+    $ go mod init example/hello
+    go: creating new go.mod: module example/hello
+    </pre>
   </li>
 
   <li>
-    <p>In your text editor, create a file hello.go in which to write your code.</p>
+    <p>
+      No seu editor de texto, crie um arquivo ola.go para escrever seu código.
+    </p>
   </li>
 
   <li>
-    <p>Paste the following code into your hello.go file and save the file.</p>
+    <p>Cole o seguinte código no seu arquivo ola.go e salve o arquivo.</p>
 
     <pre>
-package main
+    package main
 
-import "fmt"
+    import "fmt"
 
-func main() {
-    fmt.Println("Hello, World!")
-}
-</pre
-    >
+    func main() {
+        fmt.Println("Olá, mundo!")
+    }
+    </pre>
 
-    <p>
-      This is your Go code. In this code, you:
-    </p>
+    <p>Este é o seu código Go. Neste código, você:</p>
 
     <ul>
       <li>
-        Declare a <code>main</code> package (a package is a way to group
-        functions, and it's made up of all the files in the same directory).
+        Declara um pacote <code>main</code> (um pacote é uma forma de agrupar
+        funções e é composto por todos os arquivos no mesmo diretório).
       </li>
       <li>
-        Import the popular
-        <a href="https://pkg.go.dev/fmt/"><code>fmt</code> package</a>,
-        which contains functions for formatting text, including printing to the
-        console. This package is one of the
-        <a href="https://pkg.go.dev/std">standard library</a> packages you got
-        when you installed Go.
+        Importa o popular pacote
+        <a href="https://pkg.go.dev/fmt/"><code>fmt</code></a>, que contém
+        funções para formatação de texto, incluindo impressão no console.
+        Este pacote é um dos
+        <a href="https://pkg.go.dev/std">pacotes da biblioteca padrão</a> que
+        você obteve ao instalar o Go.
       </li>
       <li>
-        Implement a <code>main</code> function to print a message to the
-        console. A <code>main</code> function executes by default when you run
-        the <code>main</code> package.
+        Implementa uma função <code>main</code> para imprimir uma mensagem no
+        console.
+        Uma função <code>main</code> é executada por padrão quando você executa
+        o pacote <code>main</code>.
       </li>
     </ul>
   </li>
 
   <li>
-    <p>Run your code to see the greeting.</p>
+    <p>Execute seu código para ver a saudação.</p>
 
     <pre>
-$ go run .
-Hello, World!
-</pre
-    >
+    $ go run .
+    Olá, mundo!
+    </pre>
 
     <p>
-      The
-      <a href="/cmd/go/#hdr-Compile_and_run_Go_program"
-        ><code>go run</code></a> command
-      is one of many <code>go</code> commands you'll use to get things done with
-      Go. Use the following command to get a list of the others:
+      O comando
+      <a href="/cmd/go/#hdr-Compile_and_run_Go_program"><code>go run</code></a>
+      é um dos muitos comandos <code>go</code> que você usará para realizar
+      tarefas com Go.
+      Use o seguinte comando para obter uma lista dos outros:
     </p>
 
     <pre>
-$ go help
-</pre
-    >
+    $ go help
+    </pre>
   </li>
 </ol>
 
-<h2 id="call">Call code in an external package</h2>
+<h2 id="call">Chame código em um pacote externo</h2>
 
 <p>
-  When you need your code to do something that might have been implemented by
-  someone else, you can look for a package that has functions you can use in
-  your code.
+  Quando precisar que seu código faça algo que pode ter sido implementado por
+  outra pessoa, você pode procurar um pacote que tenha funções que você possa
+  usar em seu código.
 </p>
 
 <ol>
   <li>
-    Make your printed message a little more interesting with a function from an
-    external module.
+    Torne sua mensagem impressa um pouco mais interessante com uma função de um
+    módulo externo.
 
     <ol>
       <li>
-        Visit pkg.go.dev and
-        <a href="https://pkg.go.dev/search?q=quote"
-          >search for a "quote" package</a
-        >.
+        Visite pkg.go.dev e
+        <a href="https://pkg.go.dev/search?q=quote">
+          procure por um pacote "quote"
+        </a>.
       </li>
       <li>
-        In the search results, locate and click on the v1 of the <code>rsc.io/quote</code> package
-        (it should be listed with the "Other major versions" of <code>rsc.io/quote/v4</code>).
+        Nos resultados da pesquisa, localize e clique na v1 do pacote
+        <code>rsc.io/quote</code> (ele deve estar listado com "Outras versões
+        principais" de <code>rsc.io/quote/v4</code>).
       </li>
       <li>
-        In the <strong>Documentation</strong> section, under <strong>Index</strong>, note the
-        list of functions you can call from your code. You'll use the
-        <code>Go</code> function.
+        Na seção <strong>Documentation</strong>, em <strong>Index</strong>,
+        observe a lista de funções que você pode chamar do seu código.
+        Você usará a função <code>Go</code>.
       </li>
       <li>
-        At the top of this page, note that package <code>quote</code> is
-        included in the <code>rsc.io/quote</code> module.
+        No topo desta página, observe que o pacote <code>quote</code> está
+        incluído no módulo <code>rsc.io/quote</code>.
       </li>
     </ol>
 
     <p>
-      You can use the pkg.go.dev site to find published modules whose packages
-      have functions you can use in your own code. Packages are published in
-      modules -- like <code>rsc.io/quote</code> -- where others can use them.
-      Modules are improved with new versions over time, and you can upgrade your
-      code to use the improved versions.
+      Você pode usar o site pkg.go.dev para encontrar módulos publicados cujos
+      pacotes têm funções que você pode usar em seu próprio código.
+      Os pacotes são publicados em módulos — como <code>rsc.io/quote</code> —
+      onde outras pessoas podem usá-los.
+      Os módulos são aprimorados com novas versões ao longo do tempo, e você
+      pode atualizar seu código para usar as versões aprimoradas.
     </p>
   </li>
 
   <li>
-    In your Go code, import the <code>rsc.io/quote</code> package and add a call
-    to its <code>Go</code> function.
+    No seu código Go, importe o pacote <code>rsc.io/quote</code> e adicione uma
+    chamada à sua função <code>Go</code>.
 
     <p>
-      After adding the highlighted lines, your code should include the
-      following:
+      Após adicionar as linhas destacadas, seu código deverá incluir o seguinte:
     </p>
 
     <pre>
-package main
+    package main
 
-import "fmt"
+    import "fmt"
 
-<ins>import "rsc.io/quote"</ins>
+    <ins>import "rsc.io/quote"</ins>
 
-func main() {
-    <ins>fmt.Println(quote.Go())</ins>
-}
-</pre>
+    func main() {
+        <ins>fmt.Println(quote.Go())</ins>
+    }
+    </pre>
   </li>
 
   <li>
-    Add new module requirements and sums.
+    Adicione novos requisitos e hashes para o módulo.
 
     <p>
-      Go will add the <code>quote</code> module as a requirement, as well as a
-      go.sum file for use in authenticating the module. For more, see
-      <a href="/ref/mod#authenticating">Authenticating modules</a> in the Go
-      Modules Reference.
+      Go adicionará o módulo <code>quote</code> como um requisito, bem como um
+      arquivo go.sum para uso na autenticação do módulo.
+      Para mais informações, consulte
+      <a href="/ref/mod#authenticating">Autenticando módulos</a> na Referência
+      de Módulos do Go.
     </p>
     <pre>
-$ go mod tidy
-go: finding module for package rsc.io/quote
-go: found rsc.io/quote in rsc.io/quote v1.5.2
-</pre
-    >
+    $ go mod tidy
+    go: finding module for package rsc.io/quote
+    go: found rsc.io/quote in rsc.io/quote v1.5.2
+    </pre>
   </li>
 
   <li>
-    Run your code to see the message generated by the function you're calling.
+    Execute seu código para ver a mensagem gerada pela função que você está
+    chamando.
 
     <pre>
-$ go run .
-Don't communicate by sharing memory, share memory by communicating.
-</pre
-    >
+    $ go run .
+    Don't communicate by sharing memory, share memory by communicating.
+    </pre>
 
     <p>
-      Notice that your code calls the <code>Go</code> function, printing a
-      clever message about communication.
+      Observe que seu código chama a função <code>Go</code>, exibindo uma
+      mensagem inteligente sobre comunicação.
     </p>
 
     <p>
-      When you ran <code>go mod tidy</code>, it located and downloaded the
-      <code>rsc.io/quote</code> module that contains the package you imported.
-      By default, it downloaded the latest version -- v1.5.2.
+      Quando você executou <code>go mod tidy</code>, ele localizou e baixou o
+      módulo <code>rsc.io/quote</code> que contém o pacote que você importou.
+      Por padrão, ele baixou a versão mais recente -- v1.5.2.
     </p>
   </li>
 </ol>
 
-<h2 id="write-more">Write more code</h2>
+<h2 id="write-more">Escreva mais código</h2>
 
 <p>
-  With this quick introduction, you got Go installed and learned some of the
-  basics. To write some more code with another tutorial, take a look at
-  <a href="/doc/tutorial/create-module.html">Create a Go module</a>.
+  Com esta rápida introdução, você instalou o Go e aprendeu alguns dos conceitos
+  básicos.
+  Para escrever mais código com outro tutorial, dê uma olhada em
+  <a href="/doc/tutorial/create-module.html">Crie um módulo Go</a>.
 </p>
