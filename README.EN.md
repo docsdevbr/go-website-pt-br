@@ -1,4 +1,4 @@
-# [go-doc-pt-br][page]
+# [go-website-pt-br][page]
 
 [![README file in English][badge-readme-en]][readme-en]
 [![README file in Brazilian Portuguese][badge-readme-pt-br]][readme-pt-br]
@@ -6,7 +6,7 @@
 [![Contributors][badge-contributors]][contributors]
 [![GitHub Sponsors][badge-github-sponsors]][github-sponsors]
 
-Translation of the Go Documentation into Brazilian Portuguese.
+Translation of the Go website into Brazilian Portuguese.
 
 ## Contributing
 
@@ -33,11 +33,11 @@ Documentation licensed under the
 [3-Clause BSD License][license].<br>
 The original work was translated from English into Brazilian Portuguese.
 
-[badge-contributors]: https://img.shields.io/github/contributors/docsdevbr/go-doc-pt-br
+[badge-contributors]: https://img.shields.io/github/contributors/docsdevbr/go-website-pt-br
 
 [badge-github-sponsors]: https://img.shields.io/github/sponsors/docsdevbr
 
-[badge-license]: https://img.shields.io/github/license/docsdevbr/go-doc-pt-br
+[badge-license]: https://img.shields.io/github/license/docsdevbr/go-website-pt-br
 
 [badge-readme-en]: https://img.shields.io/badge/lang-en-blue
 
@@ -47,7 +47,7 @@ The original work was translated from English into Brazilian Portuguese.
 
 [contributing]: https://github.com/docsdevbr/.github/blob/main/CONTRIBUTING.EN.md
 
-[contributors]: https://github.com/docsdevbr/go-doc-pt-br/graphs/contributors
+[contributors]: https://github.com/docsdevbr/go-website-pt-br/graphs/contributors
 
 [github-sponsors]: https://github.com/sponsors/docsdevbr
 
