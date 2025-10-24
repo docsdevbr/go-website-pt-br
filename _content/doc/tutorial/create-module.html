@@ -1,264 +1,283 @@
+<!--
+Copyright (c) 2009 The Go Authors.
+
+Documentation licensed under the 3-Clause BSD License.
+The original work was translated from English into Brazilian Portuguese.
+https://github.com/golang/website/blob/master/LICENSE
+
+source_url: https://github.com/golang/website/blob/master/_content/doc/tutorial/create-module.html
+revision: 78a220a4fa2135bd9f9fab314d6eb550c270d925
+status: ready
+-->
+
 <!--{
-    "Title": "Tutorial: Create a Go module",
+    "Title": "Tutorial: Crie um módulo Go",
     "Breadcrumb": true
 }-->
 
 <p>
-  This is the first part of a tutorial that introduces a few fundamental
-  features of the Go language. If you're just getting started with Go, be sure
-  to take a look at
-  <a href="/doc/tutorial/getting-started.html">Tutorial: Get started with Go</a>, which introduces
-  the <code>go</code> command, Go modules, and very simple Go code.
+  Esta é a primeira parte de um tutorial que apresenta alguns recursos
+  fundamentais da linguagem Go.
+  Se você está apenas começando a usar Go, não deixe de conferir o
+  <a href="/p/go/docs/tutorial/getting-started">Tutorial: Introdução ao Go</a>,
+  que apresenta o comando <code>go</code>, os módulos Go e um código Go muito
+  simples.
 </p>
 
 <p>
-  In this tutorial you'll create two modules. The first is a library which is
-  intended to be imported by other libraries or applications. The second is a
-  caller application which will use the first.
+  Neste tutorial, você criará dois módulos.
+  O primeiro é uma biblioteca que deve ser importada por outras bibliotecas ou
+  aplicações.
+  O segundo é uma aplicação chamadora que usará o primeiro.
 </p>
 
 <p>
-  This tutorial's sequence includes seven brief topics that each illustrate a
-  different part of the language.
+  A sequência deste tutorial inclui sete tópicos breves, cada um ilustrando uma
+  parte diferente da linguagem.
 </p>
 
 <ol>
   <li>
-    Create a module -- Write a small module with functions you can call from
-    another module.
+    Crie um módulo -- Escreva um pequeno módulo com funções que você pode chamar
+    de outro módulo.
   </li>
   <li>
-    <a href="/doc/tutorial/call-module-code.html">Call your code from another module</a> --
-    Import and use your new module.
+    <a href="https://go.dev/doc/tutorial/call-module-code.html">Chame seu código de outro módulo</a>
+    -- Importe e use seu novo módulo.
   </li>
   <li>
-    <a href="/doc/tutorial/handle-errors.html">Return and handle an error</a> -- Add simple
-    error handling.
+    <a href="https://go.dev/doc/tutorial/handle-errors.html">Retorne e trate um erro</a>
+    -- Adicione um tratamento de erro simples.
   </li>
   <li>
-    <a href="/doc/tutorial/random-greeting.html">Return a random greeting</a> -- Handle data
-    in slices (Go's dynamically-sized arrays).
+    <a href="https://go.dev/doc/tutorial/random-greeting.html">Retorne uma saudação aleatória</a>
+    -- Manipule dados em slices (arrays de tamanho dinâmico do Go).
   </li>
   <li>
-    <a href="/doc/tutorial/greetings-multiple-people.html"
-      >Return greetings for multiple people</a
-    >
-    -- Store key/value pairs in a map.
+    <a href="https://go.dev/doc/tutorial/greetings-multiple-people.html">Retorne saudações para várias pessoas</a>
+    -- Armazene pares chave/valor em um mapa.
   </li>
   <li>
-    <a href="/doc/tutorial/add-a-test.html">Add a test</a> -- Use Go's built-in unit testing
-    features to test your code.
+    <a href="https://go.dev/doc/tutorial/add-a-test.html">Adicione um teste</a>
+    -- Use os recursos de teste unitário integrados do Go para testar seu
+    código.
   </li>
   <li>
-    <a href="/doc/tutorial/compile-install.html">Compile and install the application</a> --
-    Compile and install your code locally.
+    <a href="https://go.dev/doc/tutorial/compile-install.html">Compile e instale a aplicação</a>
+    -- Compile e instale seu código localmente.
   </li>
 </ol>
 
 <aside class="Note">
-  <strong>Note:</strong> For other tutorials, see
-  <a href="/doc/tutorial/index.html">Tutorials</a>.
+  <strong>Observação:</strong> Para outros tutoriais, consulte
+  <a href="/p/go/docs/tutorial/">Tutoriais</a>.
 </aside>
 
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Pré-requisitos</h2>
 
 <ul>
   <li>
-    <strong>Some programming experience.</strong> The code here is pretty
-    simple, but it helps to know something about functions, loops, and arrays.
+    <strong>Alguma experiência em programação.</strong>
+    O código aqui é bem simples, mas ajuda saber algo sobre funções, laços e
+    arrays.
   </li>
   <li>
-    <strong>A tool to edit your code.</strong> Any text editor you have will
-    work fine. Most text editors have good support for Go. The most popular are
-    VSCode (free), GoLand (paid), and Vim (free).
+    <strong>Uma ferramenta para editar seu código.</strong>
+    Qualquer editor de texto que você tiver funcionará bem.
+    A maioria dos editores de texto tem bom suporte para Go.
+    Os mais populares são VSCode (gratuito), GoLand (pago) e Vim (gratuito).
   </li>
   <li>
-    <strong>A command terminal.</strong> Go works well using any terminal on
-    Linux and Mac, and on PowerShell or cmd in Windows.
+    <strong>Um terminal de comando.</strong>
+    O Go funciona bem usando qualquer terminal no Linux e Mac, e no PowerShell
+    ou cmd no Windows.
   </li>
 </ul>
 
-<h2 id="start">Start a module that others can use</h2>
+<h2 id="start">Inicie um módulo que outras pessoas possam usar</h2>
 
 <p>
-  Start by creating a Go module. In a
-  module, you collect one or more related packages for a discrete and useful set
-  of functions. For example, you might create a module with packages that have
-  functions for doing financial analysis so that others writing financial
-  applications can use your work. For more about developing modules, see
-  <a href="/doc/modules/developing">Developing and publishing modules</a>.
+  Comece criando um módulo Go.
+  Em um módulo, você coleta um ou mais pacotes relacionados para um conjunto
+  discreto e útil de funções.
+  Por exemplo, você pode criar um módulo com pacotes que tenham funções para
+  fazer análises financeiras, para que outras pessoas desenvolvedoras de
+  aplicações financeiros possam usar seu trabalho.
+  Para mais informações sobre o desenvolvimento de módulos, consulte
+  <a href="https://go.dev/doc/modules/developing">Desenvolvendo e publicando módulos</a>.
 </p>
 
 <p>
-  Go code is grouped into packages, and packages are grouped into modules. Your
-  module specifies dependencies needed to run your code, including the Go
-  version and the set of other modules it requires.
+  O código Go é agrupado em pacotes, e os pacotes são agrupados em módulos.
+  Seu módulo especifica as dependências necessárias para executar seu código,
+  incluindo a versão do Go e o conjunto de outros módulos que ele requer.
 </p>
 
 <p>
-  As you add or improve functionality in your module, you publish new versions
-  of the module. Developers writing code that calls functions in your module can
-  import the module's updated packages and test with the new version before
-  putting it into production use.
+  À medida que você adiciona ou aprimora funcionalidades em seu módulo, você
+  publica novas versões do módulo.
+  As pessoas desenvolvedoras que escrevem código que chama funções em seu módulo
+  podem importar os pacotes atualizados do módulo e testar com a nova versão
+  antes de colocá-la em produção.
 </p>
 
 <ol>
   <li>
-    Open a command prompt and <code>cd</code> to your home directory.
+    Abra um prompt de comando e acesse seu diretório inicial com
+    <code>cd</code>.
 
     <p>
-      On Linux or Mac:
+      No Linux ou Mac:
     </p>
 
     <pre>
-cd
-</pre
-    >
+    cd
+    </pre>
 
     <p>
-      On Windows:
+      No Windows:
     </p>
 
     <pre>
-cd %HOMEPATH%
-</pre
-    >
+    cd %HOMEPATH%
+    </pre>
   </li>
 
   <li>
-    Create a <code>greetings</code> directory for your Go module source code.
+    Crie um diretório <code>greetings</code> para o código-fonte do seu módulo
+    Go.
 
     <p>
-      For example, from your home directory use the following commands:
+      Por exemplo, no seu diretório inicial, use os seguintes comandos:
     </p>
 
     <pre>
-mkdir greetings
-cd greetings
-</pre
-    >
+    mkdir greetings
+    cd greetings
+    </pre>
   </li>
 
   <li>
-    Start your module using the
-    <a
-      href="/ref/mod#go-mod-init"
-      ><code>go mod init</code> command</a
-    >.
+    Inicie seu módulo usando o
+    <a href="https://go.dev/ref/mod#go-mod-init">
+      comando <code>go mod init</code>
+    </a>.
 
     <p>
-      Run the <code>go mod init</code> command, giving it your module path --
-      here, use <code>example.com/greetings</code>. If you publish a module,
-      this <em>must</em> be a path from which your module can be downloaded by
-      Go tools. That would be your code's repository.
+      Execute o comando <code>go mod init</code>, informando o caminho do seu
+      módulo -- aqui, use <code>example.com/greetings</code>.
+      Se você publicar um módulo, este <em>deve</em> ser um caminho de onde seu
+      módulo possa ser baixado pelas ferramentas do Go.
+      Esse seria o repositório do seu código.
     </p>
 
     <p>
-        For more on naming your module with a module path, see
-        <a href="/doc/modules/managing-dependencies#naming_module">Managing
-        dependencies</a>.
+      Para saber mais sobre como nomear seu módulo com um caminho de módulo,
+      consulte
+      <a href="https://go.dev/doc/modules/managing-dependencies#naming_module">Gerenciando dependências</a>.
     </p>
 
     <pre>
-$ go mod init example.com/greetings
-go: creating new go.mod: module example.com/greetings
-</pre
-    >
+    $ go mod init example.com/greetings
+    go: creating new go.mod: module example.com/greetings
+    </pre>
 
     <p>
-      The <code>go mod init</code> command creates a go.mod file to track your
-      code's dependencies. So far, the file includes only the name of your
-      module and the Go version your code supports. But as you add dependencies,
-      the go.mod file will list the versions your code depends on. This keeps
-      builds reproducible and gives you direct control over which module
-      versions to use.
+      O comando <code>go mod init</code> cria um arquivo go.mod para rastrear as
+      dependências do seu código.
+      Até o momento, o arquivo inclui apenas o nome do seu módulo e a versão do
+      Go que o seu código suporta.
+      Mas, à medida que você adiciona dependências, o arquivo go.mod listará as
+      versões das quais o seu código depende.
+      Isso mantém as compilações reproduzíveis e lhe dá controle direto sobre
+      quais versões do módulo usar.
     </p>
   </li>
 
   <li>
-    In your text editor, create a file in which to write your code and call it
-    greetings.go.
+    No seu editor de texto, crie um arquivo para escrever seu código e chame-o
+    de `greetings.go`.
   </li>
 
   <li>
-    Paste the following code into your greetings.go file and save the file.
+    Cole o código a seguir no seu arquivo `greetings.go` e salve o arquivo.
 
     <pre>
-package greetings
+    package greetings
 
-import "fmt"
+    import "fmt"
 
-// Hello returns a greeting for the named person.
-func Hello(name string) string {
-    // Return a greeting that embeds the name in a message.
-    message := fmt.Sprintf("Hi, %v. Welcome!", name)
-    return message
-}
-</pre
-    >
+    // Hello retorna uma saudação para a pessoa nomeada.
+    func Hello(name string) string {
+        // Retorna uma saudação que incorpora o nome em uma mensagem.
+        message := fmt.Sprintf("Olá, %v. Bem-vinda!", name)
+        return message
+    }
+    </pre>
 
     <p>
-      This is the first code for your module. It returns a greeting to any
-      caller that asks for one. You'll write code that calls this function in
-      the next step.
+      Este é o primeiro código do seu módulo.
+      Ele retorna uma saudação para qualquer código chamador que solicite uma.
+      Você escreverá o código que chama esta função na próxima etapa.
     </p>
 
     <p>
-      In this code, you:
+      Neste código, você:
     </p>
 
     <ul>
       <li>
-        Declare a <code>greetings</code> package to collect related functions.
+        Declara um pacote <code>greetings</code> para coletar funções
+        relacionadas.
       </li>
       <li>
-        Implement a <code>Hello</code> function to return the greeting.
+        Implementa uma função <code>Hello</code> para retornar a saudação.
         <p>
-          This function takes a <code>name</code> parameter whose type is
-          <code>string</code>. The function also returns a <code>string</code>.
-          In Go, a function whose name starts with a capital letter can be
-          called by a function not in the same package. This is known in Go as
-          an exported name. For more about exported names, see
-          <a href="/tour/basics/3">Exported names</a> in the
-          Go tour.
+          Esta função recebe um parâmetro <code>name</code> cujo tipo é
+          <code>string</code>.
+          A função também retorna uma <code>string</code>.
+          Em Go, uma função cujo nome começa com letra maiúscula pode ser
+          chamada por uma função que não esteja no mesmo pacote.
+          Isso é conhecido em Go como um nome exportado.
+          Para mais informações sobre nomes exportados, consulte
+          <a href="https://go.dev/tour/basics/3">Nomes exportados</a> no tour em
+          Go.
         </p>
-        <img src="images/function-syntax.png" width="300px" />
+        <img src="https://media.docs.dev.br/image/p/go/docs/tutorial/images/function-syntax.png" width="300px" />
       </li>
 
       <li>
-        Declare a <code>message</code> variable to hold your greeting.
+        Declara uma variável <code>message</code> para armazenar sua saudação.
         <p>
-          In Go, the <code>:=</code> operator is a shortcut for declaring and
-          initializing a variable in one line (Go uses the value on the right to
-          determine the variable's type). Taking the long way, you might have
-          written this as:
+          Em Go, o operador <code>:=</code> é um atalho para declarar e
+          inicializar uma variável em uma linha (Go usa o valor à direita para
+          determinar o tipo da variável).
+          Seguindo o caminho mais longo, você poderia ter escrito isso como:
         </p>
         <pre>
-var message string
-message = fmt.Sprintf("Hi, %v. Welcome!", name)
-</pre
-        >
+        var message string
+        message = fmt.Sprintf("Olá, %v. Bem-vinda!", name)
+        </pre>
       </li>
 
       <li>
-        Use the <code>fmt</code> package's <a href="https://pkg.go.dev/fmt/#Sprintf">
-        <code>Sprintf</code> function</a> to create a greeting message. The
-        first argument is a format string, and <code>Sprintf</code> substitutes
-        the <code>name</code> parameter's value for the <code>%v</code> format
-        verb. Inserting the value of the <code>name</code> parameter completes
-        the greeting text.
+        Use a <a href="https://pkg.go.dev/fmt/#Sprintf">função <code>Sprintf</code></a>
+        do pacote <code>fmt</code> para criar uma mensagem de saudação.
+        O primeiro argumento é uma string de formato, e <code>Sprintf</code>
+        substitui o valor do parâmetro <code>name</code> pelo verbo de formato
+        <code>%v</code>.
+        Inserir o valor do parâmetro <code>name</code> completa o texto de
+        saudação.
       </li>
-      <li>Return the formatted greeting text to the caller.</li>
+      <li>Retorna o texto de saudação formatado para o código chamador.</li>
     </ul>
   </li>
 </ol>
 
 <p>
-  In the next step, you'll call this function from another module.
+  Na próxima etapa, você chamará essa função de outro módulo.
 </p>
 
 <p class="Navigation">
-  <a class="Navigation-next" href="/doc/tutorial/call-module-code.html"
-    >Call your code from another module &gt;</a
-  >
+  <a class="Navigation-next" href="https://go.dev/doc/tutorial/call-module-code.html">Chame seu código de outro módulo &gt;</a>
 </p>
