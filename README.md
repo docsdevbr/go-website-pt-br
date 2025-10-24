@@ -29,8 +29,7 @@ Você pode apoiar o projeto através do [GitHub Sponsors][github-sponsors] ou
 
 Copyright (c) 2009 The Go Authors.
 
-Documentação licenciada sob a
-[Licença BSD de 3 Cláusulas][license].<br>
+Documentação licenciada sob a [Licença BSD de 3 Cláusulas][license].<br>
 A obra original foi traduzida do inglês para o português brasileiro.
 
 [badge-contributors]: https://img.shields.io/github/contributors/docsdevbr/go-website-pt-br

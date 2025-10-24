@@ -29,8 +29,7 @@ You can support the project through [GitHub Sponsors][github-sponsors] or
 
 Copyright (c) 2009 The Go Authors.
 
-Documentation licensed under the
-[3-Clause BSD License][license].<br>
+Documentation licensed under the [3-Clause BSD License][license].<br>
 The original work was translated from English into Brazilian Portuguese.
 
 [badge-contributors]: https://img.shields.io/github/contributors/docsdevbr/go-website-pt-br
