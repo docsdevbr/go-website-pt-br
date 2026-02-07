@@ -3,7 +3,7 @@
 
 # Documentation licensed under the 3-Clause BSD License.
 # The original work was translated from English into Brazilian Portuguese.
-# https://github.com/golang/website/blob/master/LICENSE
+# https://github.com/golang/website/blob/-/LICENSE
 
 title: Everything You Always Wanted to Know About Type Inference - And a Little Bit More
 date: 2023-10-09

@@ -3,7 +3,7 @@
 
 # Documentation licensed under the 3-Clause BSD License.
 # The original work was translated from English into Brazilian Portuguese.
-# https://github.com/golang/website/blob/master/LICENSE
+# https://github.com/golang/website/blob/-/LICENSE
 
 title: Portable Cloud Programming with Go Cloud
 date: 2018-07-24

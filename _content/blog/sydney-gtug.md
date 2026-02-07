@@ -3,7 +3,7 @@
 
 # Documentation licensed under the 3-Clause BSD License.
 # The original work was translated from English into Brazilian Portuguese.
-# https://github.com/golang/website/blob/master/LICENSE
+# https://github.com/golang/website/blob/-/LICENSE
 
 title: "Two Go Talks: \"Lexical Scanning in Go\" and \"Cuddle: an App Engine Demo\""
 date: 2011-09-01
