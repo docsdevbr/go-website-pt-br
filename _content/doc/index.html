@@ -6,30 +6,29 @@ The original work was translated from English into Brazilian Portuguese.
 https://github.com/golang/website/blob/-/LICENSE
 
 source_url: https://github.com/golang/website/blob/master/_content/doc/index.html
-revision: 74641f3495984766c171703d06af11f123e07a11
+revision: fd82e1351b3c513e750e028ae21710366483b184
 status: ready
 -->
 
 <!--{
 	"Title": "Documentação do Go",
-	"Template": true,
 	"HideTOC": true
 }-->
 
 <p>
-  A linguagem de programação Go é um projeto de código aberto que visa tornar as
+  A linguagem de programação Go é um projeto de código aberto para tornar as
   pessoas programadoras mais produtivas.
 </p>
 
 <p>
   Go é expressivo, conciso, limpo e eficiente.
   Seus mecanismos de concorrência facilitam a escrita de programas que
-  aproveitam ao máximo máquinas multicore e em rede, enquanto seu novo sistema
-  de tipos permite a construção flexível e modular de programas.
+  aproveitam ao máximo máquinas multicore e em rede, enquanto seu sistema de
+  tipos inovador permite a construção flexível e modular de programas.
   Go compila rapidamente para código de máquina, mas tem a conveniência da
   coleta de lixo e o poder da reflexão em tempo de execução.
-  É uma linguagem compilada, rápida, estaticamente tipada, que se assemelha a
-  uma linguagem interpretada dinamicamente tipada.
+  É uma linguagem compilada, tipada estaticamente e rápida, que se comporta como
+  uma linguagem tipada interpretada dinamicamente.
 </p>
 
 <div class="Masonry">
@@ -92,9 +91,9 @@ status: ready
     </a>
   </h3>
   <p>
-    Com generics, você pode declarar e usar funções ou tipos que são escritos
-    para funcionar com qualquer um de um conjunto de tipos fornecido pelo código
-    que faz a chamada.
+    Com generics, você pode declarar e usar funções ou tipos escritos para
+    funcionar com qualquer um de um conjunto de tipos fornecido pelo código que
+    faz a chamada.
   </p>
 
   <h3 id="fuzz-tutorial">
@@ -121,7 +120,7 @@ status: ready
   </h3>
   <p>
     Esta documentação explica como desenvolver um conjunto simples de pacotes Go
-    dentro de um módulo e mostra como usar o comando
+    em um módulo e mostra como usar o comando
     <a href="/cmd/go/"><code>go</code></a>
     para construir e testar pacotes.
   </p>
@@ -168,9 +167,8 @@ status: ready
     </a>
   </h3>
   <p>
-    Um documento que oferece dicas para escrever código em Go claro e
-    idiomático.
-    Leitura obrigatória para qualquer pessoa programadora iniciante em Go.
+    Um documento que oferece dicas para escrever código Go claro e idiomático.
+    Leitura obrigatória para qualquer pessoa programadora Go iniciante.
     Ele complementa o guia e a especificação da linguagem, ambos os quais devem
     ser lidos primeiro.
   </p>
@@ -180,6 +178,9 @@ status: ready
       Perguntas Frequentes (FAQ)
     </a>
   </h3>
+  <p>
+    Respostas para perguntas comuns sobre Go.
+  </p>
 
   <h3 id="editors">
     <a href="editors.html" aria-describedby="index-description">
@@ -198,7 +199,7 @@ status: ready
   </h3>
   <p>
     Resume ferramentas e metodologias para diagnosticar problemas em programas
-    em Go.
+    Go.
   </p>
 
   <h3 id="gc-guide">
@@ -241,11 +242,11 @@ status: ready
 
   <h3 id="pgo">
     <a href="/doc/pgo" aria-describedby="index-description">
-      Otimização guiada por profile
+      Otimização guiada por perfil
     </a>
   </h3>
   <p>
-    Página principal da documentação para otimização guiada por profile (PGO) de
+    Página principal da documentação para otimização guiada por perfil (PGO) de
     aplicações Go.
   </p>
 
@@ -284,7 +285,7 @@ status: ready
 
   <h3 id="mod">
     <a href="/ref/mod" aria-describedby="index-description">
-      Referência do Go Modules
+      Referência do Módulos Go
     </a>
   </h3>
   <p>
@@ -294,7 +295,7 @@ status: ready
 
   <h3>
     <a href="/doc/modules/gomod-ref" aria-describedby="index-description">
-      referência do arquivo go.mod
+      Referência do arquivo go.mod
     </a>
   </h3>
   <p>
@@ -307,9 +308,9 @@ status: ready
     </a>
   </h3>
   <p>
-    Um documento que especifica as condições sob as quais leituras de uma
-    variável em uma goroutine podem ter a garantia de observar valores
-    produzidos por escritas na mesma variável em uma goroutine diferente.
+    Um documento que especifica as condições sob as quais as leituras de uma
+    variável em uma goroutine podem garantir a observação dos valores produzidos
+    pelas escritas na mesma variável em uma goroutine diferente.
   </p>
 
   <h3 id="contributing">
@@ -321,10 +322,10 @@ status: ready
 
   <h3 id="release">
     <a href="/doc/devel/release.html" aria-describedby="index-description">
-      Histórico de lançamentos
+      Histórico de versões
     </a>
   </h3>
-  <p>Um resumo das mudanças entre os lançamentos do Go.</p>
+  <p>Um resumo das mudanças entre as versões do Go.</p>
 
 </section>
 
@@ -359,8 +360,8 @@ status: ready
   <p>
     Você usa o handle de banco de dados Go para executar operações de banco de
     dados.
-    Depois de abrir um handle com propriedades de conexão de banco de dados, o
-    handle representa um pool de conexões que ele gerencia em seu nome.
+    Após abrir um handle com propriedades de conexão de banco de dados, o handle
+    representa um pool de conexões que ele gerencia em seu nome.
   </p>
 
   <h3 id="change-data">
@@ -369,7 +370,7 @@ status: ready
     </a>
   </h3>
   <p>
-    Para operações SQL que podem alterar o banco de dados, incluindo SQL
+    Para operações SQL que podem alterar o banco de dados, incluindo
     <code>INSERT</code>, <code>UPDATE</code> e <code>DELETE</code>, você usa os
     métodos <code>Exec</code>.
   </p>
@@ -386,11 +387,11 @@ status: ready
 
   <h3 id="prepared-statements">
     <a href="/doc/database/prepared-statements" aria-describedby="index-description">
-      Usando prepared statements
+      Usando instruções preparadas
     </a>
   </h3>
   <p>
-    Definir uma prepared statement para uso repetido pode ajudar seu código a
+    Definir uma instrução preparada para uso repetido pode ajudar seu código a
     rodar um pouco mais rápido, evitando a sobrecarga de recriar a instrução
     cada vez que seu código executa a operação no banco de dados.
   </p>
@@ -401,9 +402,10 @@ status: ready
     </a>
   </h3>
   <p>
-    <code>sql.Tx</code> exporta métodos que representam a semântica específica
-    da transação, incluindo <code>Commit</code> e <code>Rollback</code>, bem
-    como métodos que você usa para executar operações comuns de banco de dados.
+    O objeto <code>sql.Tx</code> expõe métodos que representam a semântica
+    específica da transação, incluindo <code>Commit</code> e
+    <code>Rollback</code>, bem como métodos que você usa para executar operações
+    comuns de banco de dados.
   </p>
 
   <h3 id="cancel-operations">
@@ -414,8 +416,8 @@ status: ready
   <p>
     Usando <a href="https://pkg.go.dev/context#Context">context.Context</a>,
     você pode fazer com que as chamadas de função e os serviços da sua aplicação
-    parem de executar antes do esperado e retornem um erro quando o
-    processamento não for mais necessário.
+    parem de executar antecipadamente e retornem um erro quando o processamento
+    não for mais necessário.
   </p>
 
   <h3 id="manage-connections">
@@ -435,7 +437,7 @@ status: ready
   </h3>
   <p>
     Você pode evitar o risco de injeção de SQL fornecendo valores de parâmetros
-    SQL como argumentos de função do pacote <code>sql</code>
+    SQL como argumentos de função do pacote <code>sql</code>.
   </p>
 
 </section>
@@ -450,8 +452,8 @@ status: ready
     </a>
   </h3>
   <p>
-    Você pode reunir pacotes relacionados em módulos e, em seguida, publicá-los
-    para uso de outras pessoas desenvolvedoras.
+    Você pode agrupar pacotes relacionados em módulos e, em seguida, publicá-los
+    para que outras pessoas desenvolvedoras os utilizem.
     Este tópico oferece uma visão geral do desenvolvimento e da publicação de
     módulos.
   </p>
@@ -462,9 +464,10 @@ status: ready
     </a>
   </h3>
   <p>
-    Ao desenvolver módulos para uso de outras pessoas desenvolvedoras, você pode
-    seguir um fluxo de trabalho que ajuda a garantir uma experiência confiável e
-    consistente para as pessoas desenvolvedoras que usam o módulo.
+    Ao desenvolver módulos para uso por outras pessoas desenvolvedoras, você
+    pode seguir um fluxo de trabalho que ajuda a garantir uma experiência
+    confiável e consistente para as pessoas desenvolvedoras que utilizam o
+    módulo.
     Este tópico descreve as etapas gerais desse fluxo de trabalho.
   </p>
 
@@ -474,10 +477,10 @@ status: ready
     </a>
   </h3>
   <p>
-    Ao desenvolver módulos para publicar para uso de outras pessoas, você pode
-    ajudar a garantir que seus módulos sejam mais fáceis de usar para outras
-    pessoas desenvolvedoras seguindo as convenções de repositório descritas
-    neste tópico.
+    Ao desenvolver módulos para publicação e uso por outras pessoas, você pode
+    garantir que seus módulos sejam mais fáceis de usar para outras pessoas
+    desenvolvedoras seguindo as convenções de repositório descritas neste
+    tópico.
   </p>
 
   <h3 id="modules-layout">
@@ -486,21 +489,21 @@ status: ready
     </a>
   </h3>
   <p>
-    Qual é a maneira correta de organizar os arquivos e diretórios em um típico
-    projeto Go?
+    Qual é a maneira correta de organizar os arquivos e diretórios em um projeto
+    Go típico?
     Este tópico discute alguns layouts comuns, dependendo do tipo de módulo que
     você possui.
   </p>
 
   <h3 id="modules-major-version">
     <a href="/doc/modules/major-version" aria-describedby="index-description">
-      Desenvolvendo uma atualização de versão principal
+      Desenvolvendo uma atualização da versão principal
     </a>
   </h3>
   <p>
     Uma atualização da versão principal pode ser muito disruptiva para as
-    pessoas usuárias do seu módulo, pois inclui alterações significativas e
-    representa um novo módulo.
+    pessoas usuárias do seu módulo, pois inclui alterações que quebram a
+    compatibilidade e representa um novo módulo.
     Saiba mais neste tópico.
   </p>
 
@@ -511,9 +514,10 @@ status: ready
   </h3>
   <p>
     Quando você deseja disponibilizar um módulo para outras pessoas
-    desenvolvedoras, publique-o para que fique visível para as ferramentas Go.
+    desenvolvedoras, você o publica para que ele fique visível para as
+    ferramentas do Go.
     Após a publicação do módulo, as pessoas desenvolvedoras que importarem seus
-    pacotes poderão resolver uma dependência no módulo executando comandos como
+    pacotes poderão resolver uma dependência do módulo executando comandos como
     <code>go get</code>.
   </p>
 
@@ -523,11 +527,12 @@ status: ready
     </a>
   </h3>
   <p>
-    A pessoa desenvolvedora de um módulo usa cada parte do número da versão para
-    sinalizar a estabilidade e a compatibilidade com versões anteriores.
-    Para cada novo lançamento, o número da versão de lançamento de um módulo
-    reflete especificamente a natureza das alterações do módulo desde o
-    lançamento anterior.
+    A pessoa desenvolvedora de um módulo usa cada parte do número da versão do
+    módulo para sinalizar a estabilidade e a compatibilidade com versões
+    anteriores.
+    Para cada nova versão, o número da versão de lançamento de um módulo
+    reflete especificamente a natureza das alterações do módulo desde a versão
+    anterior.
   </p>
 
 </section>
@@ -538,13 +543,14 @@ status: ready
 
   <h3 id="video_tour_of_go">
     <a href="https://research.swtch.com/gotour" aria-describedby="index-description">
-      Um tour em vídeo do Go
+      Um tour em vídeo pelo Go
     </a>
   </h3>
   <p>
-    Três coisas que tornam Go rápido, divertido e produtivo: interfaces,
+    Três coisas que tornam o Go rápido, divertido e produtivo: interfaces,
     reflexão e concorrência.
-    Nesta palestra é criado um rastreador web de brinquedo para demonstrar isso.
+    Nesta palestra é criado um rastreador web de brinquedo para demonstrar
+    esses conceitos.
   </p>
 
   <h3 id="go_code_that_grows">
@@ -554,27 +560,27 @@ status: ready
   </h3>
   <p>
     Um dos principais objetivos de design de Go é a adaptabilidade do código;
-    que seja fácil pegar um design simples e desenvolvê-lo de forma limpa e
+    que seja fácil pegar um design simples e expandi-lo de forma limpa e
     natural.
-    Nesta palestra, Andrew Gerrand descreve um servidor simples de "roleta de
-    bate-papo" que combina pares de conexões TCP de entrada e, em seguida,
+    Nesta palestra, Andrew Gerrand descreve um servidor simples de "bate-papo
+    aleatório" que combina pares de conexões TCP de entrada e, em seguida,
     utiliza os mecanismos de concorrência, as interfaces e a biblioteca padrão
-    do Go para expandi-lo com uma interface web e outros recursos.
+    do Go para estendê-lo com uma interface web e outros recursos.
     Embora a função do programa mude drasticamente, a flexibilidade do Go
     preserva o design original à medida que ele cresce.
   </p>
 
   <h3 id="go_concurrency_patterns">
     <a href="https://www.youtube.com/watch?v=f6kdp27TYZs" aria-describedby="index-description">
-      Padrões de concorrência do Go
+      Padrões de concorrência em Go
     </a>
   </h3>
   <p>
     A concorrência é a chave para projetar serviços de rede de alto desempenho.
-    As primitivas de concorrência do Go (goroutines e channels) fornecem um meio
+    As primitivas de concorrência do Go (goroutines e canais) fornecem um meio
     simples e eficiente de expressar a execução concorrente.
     Nesta palestra, veremos como problemas complexos de concorrência podem ser
-    resolvidos de forma elegante com código simples em Go.
+    resolvidos de forma elegante com código Go simples.
   </p>
 
   <h3 id="advanced_go_concurrency_patterns">
@@ -583,8 +589,8 @@ status: ready
     </a>
   </h3>
   <p>
-    Esta palestra expande a palestra <i>Padrões de concorrência em Go</i> para
-    se aprofundar nas primitivas de concorrência do Go.
+    Esta palestra expande a palestra sobre <i>Padrões de concorrência em Go</i>
+    para se aprofundar nas primitivas de concorrência do Go.
   </p>
 
   <h4 id="talks_more">Mais</h4>
@@ -600,7 +606,7 @@ status: ready
 <section id="codewalks" class="BigCard">
 
   <h2>Caminhadas de código</h2>
-  <p>Tours guiados de programas Go.</p>
+  <p>Visitas guiadas a programas Go.</p>
 
   <ul>
     <li>
@@ -615,7 +621,7 @@ status: ready
     </li>
     <li>
       <a href="/doc/codewalk/sharemem" aria-describedby="index-description">
-        Compartilhe memória por comunicação
+        Compartilhe memória por meio da comunicação
       </a>
     </li>
   </ul>
@@ -624,7 +630,7 @@ status: ready
   <ul>
     <li>
       <a href="/blog/json-rpc-tale-of-interfaces" aria-describedby="index-description">
-        JSON-RPC: um conto de interfaces
+        JSON-RPC: uma história sobre interfaces
       </a>
     </li>
     <li>
@@ -645,7 +651,7 @@ status: ready
     </li>
     <li>
       <a href="/blog/go-slices-usage-and-internals" aria-describedby="index-description">
-        Slices Go: uso e detalhes internos
+        Slices em Go: uso e funcionamento internos
       </a>
     </li>
     <li>
@@ -655,7 +661,7 @@ status: ready
     </li>
     <li>
       <a href="/blog/error-handling-and-go" aria-describedby="index-description">
-        Tratamento de erros e Go
+        Tratamento de erros em Go
       </a>
     </li>
   </ul>
@@ -702,25 +708,25 @@ status: ready
   <ul>
     <li>
       <a href="/blog/using-go-modules" aria-describedby="index-description">
-        Usando Go Modules
+        Usando Módulos Go
       </a>
       - uma introdução ao uso de módulos em um projeto simples.
     </li>
     <li>
       <a href="/blog/migrating-to-go-modules" aria-describedby="index-description">
-        Migrando para Go Modules
+        Migrando para Módulos Go
       </a>
       - convertendo um projeto existente para usar módulos.
     </li>
     <li>
       <a href="/blog/publishing-go-modules" aria-describedby="index-description">
-        Publicando Go Modules
+        Publicando Módulos Go
       </a>
       - como disponibilizar novas versões de módulos para outras pessoas.
     </li>
     <li>
       <a href="/blog/v2-go-modules" aria-describedby="index-description">
-        Go Modules: v2 e posteriores
+        Módulos Go: v2 e posteriores
       </a>
       - criando e publicando versões principais 2 e superiores.
     </li>
@@ -728,7 +734,7 @@ status: ready
       <a href="/blog/module-compatibility" aria-describedby="index-description">
         Mantendo seus módulos compatíveis
       </a>
-      - como manter seus módulos compatíveis com versões secundárias/de patch
+      - como manter seus módulos compatíveis com versões secundárias/de correção
       anteriores.
     </li>
   </ul>
@@ -739,17 +745,17 @@ status: ready
       <a href="/doc/articles/go_command.html" aria-describedby="index-description">
         Sobre o comando Go
       </a>
-      - por que o escrevemos, o que é, o que não é e como usá-lo.
+      - por que o escrevemos, o que ele é, o que ele não é e como usá-lo.
     </li>
     <li>
       <a href="/doc/comment" aria-describedby="index-description">
         Comentários da documentação Go
       </a>
-      - escrevendo uma boa documentação de programa
+      - escrevendo uma boa documentação de programa.
     </li>
     <li>
       <a href="/doc/gdb" aria-describedby="index-description">
-        Depurando Código Go com GDB
+        Depurando Código Go com GDB.
       </a>
     </li>
     <li>
@@ -773,9 +779,9 @@ status: ready
     </li>
     <li>
       <a href="/blog/profiling-go-programs" aria-describedby="index-description">
-        Criando profiles de programas em Go
+        Criando perfis de programas em Go
       </a>
-      - ferramentas para medir o uso de CPU e memória do seu código
+      - ferramentas para medir o uso de CPU e memória do seu código.
     </li>
     <li>
       <a href="/blog/race-detector" aria-describedby="index-description">
@@ -806,8 +812,8 @@ status: ready
   <p id="learn_more">
     Consulte a página
     <a href="/wiki/Learn" aria-describedby="index-description">Learn</a> na
-    <a href="/wiki" aria-describedby="index-description">Wiki</a> para mais
-    recursos de aprendizado de Go.
+    <a href="/wiki" aria-describedby="index-description">Wiki</a> para obter
+    mais recursos de aprendizado de Go.
   </p>
 
 </section>
@@ -821,7 +827,7 @@ status: ready
       Outros idiomas
     </a>
     na <a href="/wiki" aria-describedby="index-description">Wiki</a> para obter
-    documentação localizada.
+    documentação em outros idiomas.
   </p>
 
 </section>
