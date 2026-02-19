@@ -6,7 +6,7 @@ The original work was translated from English into Brazilian Portuguese.
 https://github.com/golang/website/blob/-/LICENSE
 
 source_url: https://github.com/golang/website/blob/master/_content/doc/install/source.html
-revision: f1d710aa6c79f6d9411faa11170b979c58544bf2
+revision: bf2e7308028161f46639d892413c4f40437476ee
 status: ready
 -->
 
@@ -21,7 +21,7 @@ status: ready
   <a href="/doc/install">Baixe e instale</a>.
 </p>
 
-<h2 id="introduction">Introdução</h2>
+<h2 id="introdução">Introdução</h2>
 
 <p>
   Go é um projeto de código aberto, distribuído sob uma
@@ -42,8 +42,8 @@ status: ready
 
 <p>
   Existem duas toolchains oficiais para o compilador Go.
-  Este documento se concentra no compilador e nas ferramentas Go
-  <code>gc</code>.
+  Este documento se concentra no compilador e nas ferramentas <code>gc</code> do
+  Go.
   Para obter informações sobre como trabalhar com o <code>gccgo</code>, um
   compilador mais tradicional que utiliza o backend do GCC, consulte
   <a href="/doc/install/gccgo">Configurando e usando o gccgo</a>.
@@ -122,7 +122,7 @@ status: ready
 
 <p>
   O conjunto completo de combinações suportadas está listado na discussão sobre
-  <a href="#environment">variáveis de ambiente</a> abaixo.
+  <a href="#variáveis-de-ambiente">variáveis de ambiente</a> abaixo.
 </p>
 
 <p>
@@ -156,7 +156,7 @@ status: ready
   <li>1.20 &lt;= Go &lt;= 1.21: um compilador Go 1.17.
   <li>1.22 &lt;= Go &lt;= 1.23: um compilador Go 1.20.
   <li>
-    Daqui para frente, a versão 1.N do Go exigirá um compilador Go 1.M, onde M é
+    A partir de agora, a versão 1.N do Go exigirá um compilador Go 1.M, onde M é
     N-2 arredondado para baixo para um número par.
     Exemplo: Go 1.24 e 1.25 exigem Go 1.22.
 </ul>
@@ -255,7 +255,7 @@ $ GOROOT_BOOTSTRAP=/usr ./make.bash
   você deve manter o checkout desta instância do git clone no branch
   <code>release-branch.go1.4</code>.
   Especificamente, não tente reutilizar este git clone na etapa posterior
-  chamada "Fazer o fetch do repositório".
+  chamada "Faça o fetch do repositório".
   A toolchain de bootstrap do go1.4 <b>deve ser capaz</b> de percorrer
   corretamente o código-fonte do go1.4 que ela presume estar presente nesta raiz
   do repositório.
@@ -272,7 +272,7 @@ $ GOROOT_BOOTSTRAP=/usr ./make.bash
 <h2 id="git">Instale o Git, se necessário</h2>
 
 <p>
-  Para executar a próxima etapa, você precisa ter o Git instalado.
+  Para executar o próximo passo, você precisa ter o Git instalado.
   (Verifique se você possui um comando <code>git</code> antes de prosseguir.)
 </p>
 
@@ -357,11 +357,11 @@ $ git checkout master
 
 <pre>
 $ cd src
-$ ./all.bash
+$ ./make.bash
 </pre>
 
 <p>
-  (Para compilar no Windows, use <code>all.bat</code>.)
+  (Para compilar no Windows, use <code>make.bat</code>.)
 </p>
 
 <p>
@@ -369,8 +369,6 @@ $ ./all.bash
 </p>
 
 <pre>
-ALL TESTS PASSED
-
 ---
 Installed Go for linux/amd64 in /home/you/go.
 Installed commands in /home/you/go/bin.
@@ -384,12 +382,12 @@ Installed commands in /home/you/go/bin.
 
 <div class="detail">
   <p>
-    Para mais informações sobre como controlar a compilação, consulte a
-    discussão sobre <a href="#environment">variáveis de ambiente</a> abaixo.
-    <code>all.bash</code> (ou <code>all.bat</code>) executa testes importantes
-    para o Go, o que pode levar mais tempo do que simplesmente compilar o Go.
-    Se você não quiser executar o conjunto de testes, use <code>make.bash</code>
-    (ou <code>make.bat</code>).
+    Para obter mais informações sobre como controlar a compilação, consulte a
+    discussão sobre <a href="#variáveis-de-ambiente">variáveis de ambiente</a>
+    abaixo.
+    Você também pode executar <code>all.bash</code> (ou <code>all.bat</code>)
+    para executar testes importantes para o Go, o que pode levar mais tempo do
+    que simplesmente compilar o Go.
   </p>
 </div>
 
@@ -431,25 +429,25 @@ olá, mundo
 
 <p>
   Você está quase terminando.
-  Você só precisa configurar um pouco mais.
+  Você só precisa configurar mais algumas coisas.
 </p>
 
 <p>
   <a href="/doc/code.html" class="download" id="start">
     <span class="big">Como escrever código em Go</span>
-    <span class="desc">Aprenda a configurar e usar as ferramentas Go</span>
+    <span class="desc">Aprenda a configurar e usar as ferramentas do Go</span>
   </a>
 </p>
 
 <p>
   O documento <a href="/doc/code.html">Como escrever código em Go</a> fornece
-  <b>instruções essenciais de configuração</b> para usar as ferramentas Go.
+  <b>instruções essenciais de configuração</b> para usar as ferramentas do Go.
 </p>
 
 <h2 id="tools">Instale as ferramentas adicionais</h2>
 
 <p>
-  O código-fonte de várias ferramentas Go (incluindo
+  O código-fonte de várias ferramentas do Go (incluindo
   <a href="https://pkg.go.dev/golang.org/x/tools/gopls">gopls</a>) é mantido no
   <a href="https://golang.org/x/tools">repositório golang.org/x/tools</a>.
   Para instalar uma das ferramentas (<code>gopls</code>, neste caso):
@@ -505,10 +503,15 @@ $ ./all.bash
 <h2 id="environment">Variáveis de ambiente opcionais</h2>
 
 <p>
-  O ambiente de compilação do Go pode ser personalizado por variáveis de
+  As ferramentas do Go podem ser personalizadas por meio de variáveis de
   ambiente.
   <i>Nenhuma delas é necessária para a compilação</i>, mas você pode definir
   algumas para substituir os padrões.
+  Definir essas variáveis de ambiente ao executar o make.bash definirá o padrão
+  para as ferramentas recém-compiladas.
+  Ao usar as ferramentas, você pode substituir esses valores padrão para uma
+  compilação específica, conforme descrito na
+  <a href="https://pkg.go.dev/cmd/go#hdr-Environment_variables">documentação do comando go</a>.
 </p>
 
 <ul>
@@ -524,87 +527,35 @@ $ ./all.bash
   </li>
 
   <li>
-    <code>$GOROOT_FINAL</code>
-    <p>
-      O valor assumido pelos binários e scripts instalados quando
-      <code>$GOROOT</code> não é definida explicitamente.
-      O valor padrão é <code>$GOROOT</code>.
-      Se você quiser construir a árvore Go em um local mas movê-la para outro
-      local após a construção, defina <code>$GOROOT_FINAL</code> como o local
-      final.
-    </p>
-  </li>
-
-  <li id="gopath">
-    <code>$GOPATH</code>
-    <p>
-      O diretório onde normalmente é feito o checkout de projetos Go fora da
-      distribuição Go.
-      Por exemplo, o checkout de <code>golang.org/x/tools</code> pode ser feito em
-      <code>$GOPATH/src/golang.org/x/tools</code>.
-      Executáveis fora da distribuição Go são instalados em
-      <code>$GOPATH/bin</code> (ou <code>$GOBIN</code>, se definida).
-      Os módulos são baixados e armazenados em cache em
-      <code>$GOPATH/pkg/mod</code>.
-    </p>
-
-    <p>
-      O local padrão de <code>$GOPATH</code> é <code>$HOME/go</code>, e geralmente
-      não é necessário definir <code>GOPATH</code> explicitamente.
-      No entanto, se você tiver feito o checkout da distribuição Go em
-      <code>$HOME/go</code>, você deve definir <code>GOPATH</code> como outro
-      local para evitar conflitos.
-    </p>
-  </li>
-
-  <li>
-    <code>$GOBIN</code>
-    <p>
-      O diretório onde executáveis fora da distribuição Go são instalados usando o
-      <a href="/cmd/go">comando go</a>.
-      Por exemplo, <code>go install golang.org/x/tools/gopls@latest</code> baixa,
-      compila e instala <code>$GOBIN/gopls</code>.
-      Por padrão, <code>$GOBIN</code> é <code>$GOPATH/bin</code> (ou
-      <code>$HOME/go/bin</code>, se <code>GOPATH</code> não estiver definida).
-      Após a instalação, você deverá adicionar este diretório à sua variável
-      <code>$PATH</code> para poder usar as ferramentas instaladas.
-    </p>
-
-    <p>
-      Note que os executáveis da distribuição Go são instalados em
-      <code>$GOROOT/bin</code> (para executáveis invocados por pessoas) ou
-      <code>$GOTOOLDIR</code> (para executáveis invocados pelo comando go; o
-      padrão é <code>$GOROOT/pkg/$GOOS_$GOARCH</code>) em vez de
-      <code>$GOBIN</code>.
-    </p>
-  </li>
-
-  <li>
     <code>$GOOS</code> e <code>$GOARCH</code>
     <p>
       O nome do sistema operacional e arquitetura de compilação alvos.
-      Estas variáveis têm como valores padrão <code>$GOHOSTOS</code> e
-      <code>$GOHOSTARCH</code>, respectivamente (descritos abaixo).
+      <code>$GOOS</code> assume por padrão o valor de <code>runtime.GOOS</code>
+      na toolchain de inicialização.
+      <code>$GOARCH</code> assume por padrão o valor de
+      <code>$GOHOSTARCH</code>, descrito abaixo.
     </p>
 
     <p>
       As opções para <code>$GOOS</code> são <code>android</code>,
       <code>darwin</code>, <code>dragonfly</code>, <code>freebsd</code>,
-      <code>illumos</code>, <code>ios</code>, <code>js</code>, <code>linux</code>,
-      <code>netbsd</code>, <code>openbsd</code>, <code>plan9</code>,
-      <code>solaris</code>, <code>wasip1</code> e <code>windows</code>.
+      <code>illumos</code>, <code>ios</code>, <code>js</code>,
+      <code>linux</code>, <code>netbsd</code>, <code>openbsd</code>,
+      <code>plan9</code>, <code>solaris</code>, <code>wasip1</code> e
+      <code>windows</code>.
     </p>
 
     <p>
-      As opções para <code>$GOARCH</code> são <code>amd64</code> (x86 de 64 bits,
-      o port mais maduro), <code>386</code> (x86 de 32 bits), <code>arm</code>
-      (ARM de 32 bits), <code>arm64</code> (ARM de 64 bits), <code>ppc64le</code>
-      (PowerPC de 64 bits, little-endian), <code>ppc64</code> (PowerPC de 64 bits,
-      big-endian), <code>mips64le</code> (MIPS de 64 bits, little-endian),
-      <code>mips64</code> (MIPS de 64 bits, big-endian), <code>mipsle</code> (MIPS
-      de 32 bits, little-endian), <code>mips</code> (MIPS de 32 bits, big-endian),
-      <code>s390x</code> (IBM System z de 64 bits, big-endian) e <code>wasm</code>
-      (WebAssembly de 32 bits).
+      As opções para <code>$GOARCH</code> são <code>amd64</code> (x86 de 64
+      bits, o port mais maduro), <code>386</code> (x86 de 32 bits),
+      <code>arm</code> (ARM de 32 bits), <code>arm64</code> (ARM de 64 bits),
+      <code>ppc64le</code> (PowerPC de 64 bits, little-endian),
+      <code>ppc64</code> (PowerPC de 64 bits, big-endian), <code>mips64le</code>
+      (MIPS de 64 bits, little-endian), <code>mips64</code> (MIPS de 64 bits,
+      big-endian), <code>mipsle</code> (MIPS de 32 bits, little-endian),
+      <code>mips</code> (MIPS de 32 bits, big-endian), <code>s390x</code> (IBM
+      System z de 64 bits, big-endian) e <code>wasm</code> (WebAssembly de 32
+      bits).
     </p>
 
     <p>
@@ -836,15 +787,14 @@ $ ./all.bash
   </li>
 
   <li>
-    <code>$GOHOSTOS</code> e <code>$GOHOSTARCH</code>.
+    <code>$GOHOSTARCH</code>
     <p>
-      O nome do sistema operacional e da arquitetura de compilação do host.
-      O padrão é o sistema operacional e a arquitetura do sistema local.
+      O nome da arquitetura do host de compilação.
+      Por padrão, utiliza-se a arquitetura do sistema local.
     </p>
 
     <p>
-      As opções válidas são as mesmas de <code>$GOOS</code> e
-      <code>$GOARCH</code>, listadas acima.
+      As opções válidas são as mesmas de <code>$GOARCH</code>, listadas acima.
       Os valores especificados devem ser compatíveis com o sistema local.
       Por exemplo, você não deve definir <code>$GOHOSTARCH</code> como
       <code>arm</code> em um sistema x86.
@@ -1011,18 +961,6 @@ $ ./all.bash
 </p>
 
 <p>
-  Se você optar por substituir os padrões, defina essas variáveis no seu perfil
-  de shell (<code>$HOME/.bashrc</code>, <code>$HOME/.profile</code> ou
-  equivalente).
-  As configurações podem ser algo como isto:
-</p>
-
-<pre>
-export GOARCH=amd64
-export GOOS=linux
-</pre>
-
-<p>
-  No entanto, para reiterar, nenhuma dessas variáveis precisa ser definida para compilar,
+  Para reiterar, nenhuma dessas variáveis precisa ser definida para compilar,
   instalar e desenvolver a árvore Go.
 </p>
