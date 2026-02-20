@@ -22,14 +22,14 @@ comunidade.
 
 ## Apoio
 
-Você pode apoiar o projeto através do [GitHub Sponsors][github-sponsors] ou
-[Pix][sponsor].
+Visite nossa [página para pessoas apoiadoras][sponsor] para saber como você pode
+apoiar o projeto.
 
 ## Licença
 
 Copyright (c) 2009 The Go Authors.
 
-Documentação licenciada sob a [Licença BSD de 3 Cláusulas][license].<br>
+Documentação licenciada sob a [Licença BSD de 3 Cláusulas][license].<br/>
 A obra original foi traduzida do inglês para o português brasileiro.
 
 [badge-contributors]: https://img.shields.io/github/contributors/docsdevbr/go-website-pt-br
@@ -52,10 +52,10 @@ A obra original foi traduzida do inglês para o português brasileiro.
 
 [license]: LICENSE
 
-[page]: https://pt.docs.dev.br/p/go/
+[page]: https://pt.docs.dev.br/tech/g/go/index.html
 
 [readme-en]: README.EN.md
 
 [readme-pt-br]: README.md
 
-[sponsor]: https://pt.docs.dev.br/sponsor
+[sponsor]: https://pt.docs.dev.br/sponsor.html
