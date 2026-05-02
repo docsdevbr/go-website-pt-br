@@ -1,9 +1,10 @@
 ---
 # Copyright (c) 2009 The Go Authors.
 
+# SPDX-License-Identifier: BSD-3-Clause
 # Documentation licensed under the 3-Clause BSD License.
 # The original work was translated from English into Brazilian Portuguese.
-# https://github.com/golang/website/blob/-/LICENSE
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
 
 title: A Proposal for Adding Generics to Go
 date: 2021-01-12
@@ -38,7 +39,7 @@ instance of the data structure.
 
 Since Go was first released in 2009, support for generics has been one
 of the most commonly requested language features.
-You can read more about why generics are useful in 
+You can read more about why generics are useful in
 [an earlier blog post](/blog/why-generics).
 
 Although generics have clear use cases, fitting them cleanly into a

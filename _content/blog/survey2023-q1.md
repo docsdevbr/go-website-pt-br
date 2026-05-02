@@ -1,9 +1,10 @@
 ---
 # Copyright (c) 2009 The Go Authors.
 
+# SPDX-License-Identifier: BSD-3-Clause
 # Documentation licensed under the 3-Clause BSD License.
 # The original work was translated from English into Brazilian Portuguese.
-# https://github.com/golang/website/blob/-/LICENSE
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
 
 title: Share your feedback about developing with Go
 date: 2023-01-18
@@ -19,7 +20,7 @@ Happy 2023! For seven years, the Go Team has conducted a regular survey of Go
 developers. The results of this survey have helped the team plan and prioritize
 large changes to the Go ecosystem, such as dependency management, vulnerability
 scanning, and generics. We want Go to be increasingly usable by and useful to
-developers, and your feedback has been a critical aspect of making that happen. 
+developers, and your feedback has been a critical aspect of making that happen.
 
 So here is [the January 2023 edition of the Go Developer
 Survey](https://google.qualtrics.com/jfe/form/SV_bNnbAtFZ0vfRTH8?s=b)! This

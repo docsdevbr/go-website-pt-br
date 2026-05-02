@@ -1,8 +1,15 @@
 ---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+
 linkTitle: Massive practice in Go at ByteDance
 description:
-  Go was introduced to ByteDance in 2014, and since then engineering teams across ByteDance have adopted Go to build products and services on a massive scale. 
-  As we went deeper, relatively mature microservice best practices under Go were developed and summarized, which then were open-sourced and named CloudWeGo since 2021. 
+  Go was introduced to ByteDance in 2014, and since then engineering teams across ByteDance have adopted Go to build products and services on a massive scale.
+  As we went deeper, relatively mature microservice best practices under Go were developed and summarized, which then were open-sourced and named CloudWeGo since 2021.
   Now 70% of microservices within ByteDance are written by Go.
 company: ByteDance
 series: Case Studies

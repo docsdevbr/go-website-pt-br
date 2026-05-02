@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+
 title: The Go Programming Language
 summary: Go is an open source programming language that makes it simple to build secure, scalable systems.
 ---
@@ -235,7 +242,7 @@ func main() {
               </ul>
             </div>
             <div class="WhyGo-reasonLearnMoreLink">
-              <a href="{{.link}}" aria-describedby="newwindow-description">Learn More 
+              <a href="{{.link}}" aria-describedby="newwindow-description">Learn More
               <i class="material-icons WhyGo-forwardArrowIcon" aria-hidden="true">arrow_forward</i></a>
             </div>
           </div>
@@ -254,7 +261,7 @@ func main() {
                 alt="Go Gopher is skateboarding.">
             </div>
             <div class="WhyGo-reasonShowMoreLink">
-              <a href="/solutions/use-cases" aria-describedby="newwindow-description">More use cases 
+              <a href="/solutions/use-cases" aria-describedby="newwindow-description">More use cases
               <i class="material-icons
               WhyGo-forwardArrowIcon" aria-hidden="true">arrow_forward</i></a>
             </div>

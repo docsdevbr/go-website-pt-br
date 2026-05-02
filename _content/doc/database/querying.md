@@ -1,3 +1,12 @@
+---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+---
+
 <!--{
   "Title": "Querying for data"
 }-->
@@ -119,7 +128,7 @@ finds no rows.
 You can query for multiple rows using `Query` or `QueryContext`, which return
 a `Rows` representing the query results. Your code iterates over the returned
 rows using [`Rows.Next`](https://pkg.go.dev/database/sql#Rows.Next). Each
-iteration calls `Scan` to copy column values into variables. 
+iteration calls `Scan` to copy column values into variables.
 
 `QueryContext` works like `Query` but with a `context.Context` argument. For
 more, see [Canceling in-progress operations](/doc/database/cancel-operations).

@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+
 linkTitle: "Capital One - A Serverless and Go Journey"
 description: "At the time, no single team member knew Go, but within a month, everyone was writing in Go and we were building out the endpoints. It was the flexibility, how easy it was to use, and the really cool concept behind Go (how Go handles native concurrency, garbage collection, and of course safety+speed.) that helped engage us during the build. Also, who can beat that cute mascot!"
 company: Capital One

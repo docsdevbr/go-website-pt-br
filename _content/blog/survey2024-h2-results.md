@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+
 title: Go Developer Survey 2024 H2 Results
 date: 2024-12-20
 by:
@@ -45,7 +52,7 @@ insights into how Go is used across different contexts and experience levels.
 Your participation is critical in informing our decisions about language changes
 and resource allocation, ultimately shaping the future of Go. Thank you to
 everyone who contributed, and we strongly encourage your continued participation
-in future surveys. Your experience matters to us. 
+in future surveys. Your experience matters to us.
 
 This post shares the results of our most recent Go Developer Survey, conducted
 from September 9–23, 2024. We recruited participants from the Go blog and
@@ -127,7 +134,7 @@ Consistent with previous years, most survey respondents develop with Go on Linux
 users has been very close, and we didn’t see any significant changes from the
 last survey. The randomly sampled groups from JetBrains and VS Code were more
 likely (33% and 36%, respectively) to develop on Windows than the self-selected
-group (16%). 
+group (16%).
 
 <img src="survey2024h2/os_dev.svg" alt="Chart of operating systems respondents
 use when developing Go software" class="chart" /> <img
@@ -173,7 +180,7 @@ had heard of both VS Code and GoLand, but respondents were much more likely to
 have at least tried VS Code. Interestingly, 33% of respondents said they
 regularly use 2 or more editors. They may use different editors for different
 tasks or environments, such as using Emacs or Vim via SSH, where IDEs aren’t
-available. 
+available.
 
 <img src="survey2024h2/editor_aware.svg" alt="Level of familiarity with each
 editor" class="chart" />
@@ -227,7 +234,7 @@ to Amazon Web Services. AWS is followed by self-owned or company-owned servers
 little more likely to deploy to self-owned or company-owned servers (48%) than
 those who work at small-to-medium organizations (34%). They‘re also a little
 more likely to deploy to Microsoft Azure (25%) than small-to-medium
-organizations (12%). 
+organizations (12%).
 
 <img src="survey2024h2/cloud_platform.svg" alt="Cloud providers where
 respondents deploy Go software" class="chart" />
@@ -239,7 +246,7 @@ used than EC2. Overall, Kubernetes offerings were the most popular services for
 AWS, Google Cloud, and Azure, followed by VMs and then Serverless offerings.
 Go's strengths in containerization and microservices development naturally align
 with the rising popularity of Kubernetes, as it provides an efficient and
-scalable platform for deploying and managing these types of applications. 
+scalable platform for deploying and managing these types of applications.
 
 <img src="survey2024h2/cloud_service.svg" alt="Cloud platforms where respondents
 deploy Go software" class="chart" />
@@ -258,7 +265,7 @@ Other common reasons were:
 * The API/SDK is well documented
 
 Other than familiarity, the top favorite things highlight the importance of
-having first class support for Go to keep up with developer expectations. 
+having first class support for Go to keep up with developer expectations.
 
 It was also fairly common for respondents to say they don't have a favorite
 thing about their cloud provider. From a previous version of the survey that
@@ -302,7 +309,7 @@ while only 14% a year later said they are using AI assistance for this use case.
 46% said they wanted help catching common mistakes while coding, and only 13%
 said they were using AI assistance for this. This could indicate that current AI
 assistants are not well-equipped for these kinds of tasks, or they're not well
-integrated into developer workflows or tooling. 
+integrated into developer workflows or tooling.
 
 It was also surprising to see such high usage of AI for generating Go code from
 natural language and brainstorming, since the previous survey didn't indicate
@@ -342,7 +349,7 @@ those who are less familiar with Go. We don't know how AI assistants affect
 learning or getting started on a new Go project, something we want to
 investigate in the future. However, all experience levels had similar rates of
 satisfaction with their AI assistants, around 73%, so new Go developers are not
-more satisfied with AI assistants, despite using them more often. 
+more satisfied with AI assistants, despite using them more often.
 
 <img src="survey2024h2/ai_assist_tasks_exp.svg" alt= "Most common tasks used
 with AI assistance by experience with Go" class="chart" />
@@ -390,7 +397,7 @@ solve" class="chart" />
 According to the write-in responses, many teams face challenges maintaining
 consistent coding standards because their members have varying levels of
 experience with Go and come from different programming backgrounds. This led to
-inconsistencies in coding style and the adoption of non-idiomatic patterns. 
+inconsistencies in coding style and the adoption of non-idiomatic patterns.
 
 *“There's lots of polyglot engineers where I work. So the Go written is not
 consistent. I do consider myself a Gopher and spend time trying to convince my
@@ -419,7 +426,7 @@ The majority of respondents (89%) say that work on projects where performance
 optimizations are crucial at least some of the time. 40% said they work on such
 projects at least half the time. This held true across different organization
 sizes and experience levels, suggesting that performance is an important issue
-for most developers. 
+for most developers.
 
 <img src="survey2024h2/perf_freq.svg" alt= "How often respondents work on
 performance critical software" class="chart" />
@@ -459,7 +466,7 @@ saw changes in who responded to the survey in terms of Go experience, it’d be
 very likely that other differences in results from prior cycles were due to this
 demographic shift. We also use these questions to provide comparisons between
 groups, such as satisfaction according to how long respondents have been using
-Go. 
+Go.
 
 We didn’t see any significant changes in levels of experience among respondents
 during this cycle.
@@ -483,7 +490,7 @@ source" class="chart" />
 In addition to years of experience with Go, we also measured years of
 professional coding experience. Our audience tends to be a pretty experienced
 bunch, with 26% of respondents having 16 or more years of professional coding
-experience. 
+experience.
 
 <img src="survey2024h2/dev_exp.svg" alt= "Overall levels of professional
 developer experience" class="chart" />
@@ -554,7 +561,7 @@ our friends at JetBrains, we also have an additional random sample from
 prompting a random subset of GoLand users to take the survey. This gave us two
 sources we used to compare the self-selected respondents from our traditional
 channels and help identify potential effects of [self-selection
-bias](https://en.wikipedia.org/wiki/Self-selection_bias). 
+bias](https://en.wikipedia.org/wiki/Self-selection_bias).
 
 57% of survey respondents “self-selected” to take the survey, meaning they found
 it on the Go blog or other social Go channels. People who don’t follow these
@@ -567,7 +574,7 @@ September 9–23, 2024, there was roughly a 10% chance users of the VS Code plug
 would have seen this prompt. The prompt in GoLand was similarly active between
 September 9–20. By examining how the randomly sampled groups differ from the
 self-selected responses, as well as from each other, we’re able to more
-confidently generalize findings to the larger community of Go developers. 
+confidently generalize findings to the larger community of Go developers.
 
 <img src="survey2024h2/source.svg" alt="Chart of different sources of survey
 respondents" class="chart" />
@@ -605,6 +612,6 @@ breakdown of the differences.
 
 Thanks for reviewing our semi-annual Go Developer Survey! And many thanks to
 everyone who shared their thoughts on Go and everyone who contributed to making
-this survey happen. It means the world to us and truly helps us improve Go. 
+this survey happen. It means the world to us and truly helps us improve Go.
 
 --- Alice (on behalf of the Go team at Google)

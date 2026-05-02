@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+
 linkTitle: Find out more about Golang at SIXT
 description: “We have been doing Golang at SIXT since 2015. Back then there was not that many people here in our area which were doing Golang in production mode, mostly side projects. So it was really a bold move from our side but it proved to be quite successful. Fast forward to 2019 we have over 15 teams doing Golang. Many of the applications they have built are basically foundation for most of our mobility product offer including Rent, Ride and Share.”
 company: SIXT

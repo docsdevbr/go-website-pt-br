@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+
 linkTitle: Monzo – Building a Bank with Golang, Microservices and Containers
 description: “Go is a perfect language for creating microservice architectures,
   and the concurrency features, and the language in general,

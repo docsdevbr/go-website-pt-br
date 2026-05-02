@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+
 title: Go Developer Survey 2023 Q1 Results
 date: 2023-05-11
 by:
@@ -98,7 +105,7 @@ survey questions showed no meaningful difference between these groups, but in
 the few cases with important differences, readers will see charts that break
 down responses into “Random sample” and “Self-selected” groups.
 
-## Taking a closer look at different groups of respondents  
+## Taking a closer look at different groups of respondents
 
 Our respondent demographics did not change significantly from [our last
 survey](/blog/survey2022-q2-results). Consistent with previous
@@ -165,7 +172,7 @@ category since they wouldn’t be considered to have the experience necessary to
 answer the question and only represented about 1% of respondents.
 
 ### Novice respondents are more likely to prefer Windows than more experienced respondents
- 
+
 Our randomly sampled group had a higher proportion of novice respondents than
 the self-selected group, suggesting that there are more new Gophers out there
 that we don’t tend to hear from as often. Because they are sampled through the
@@ -206,7 +213,7 @@ We see more interesting trends for GUIs and Website / Web services (returning
 HTML). All experience levels used Go for Desktop / GUI apps at about the same
 rate.  This gives us evidence the desire for GUIs isn’t just coming from new
 Gophers looking for a fun starter project, but from across the experience
-spectrum. 
+spectrum.
 
 Websites / services returning HTML show a similar trend. One explanation could
 be that this is a common use case early in someone’s Go journey (since it is
@@ -231,7 +238,7 @@ this use case when other languages already have frameworks that meet those
 needs. As one respondent put it,
 
 >“It's usually easier to accomplish this in other languages such as PHP or
->Ruby. Partly due to the excellent frameworks that exist in those languages.” 
+>Ruby. Partly due to the excellent frameworks that exist in those languages.”
 
 Another contributing explanation for novices' interest in web development may
 be related to their usage of JavaScript / TypeScript. Novices spend more of
@@ -270,7 +277,7 @@ One respondent succinctly illustrated this issue:
 >“Error handling creates clutter and easily masks problems if not done
 >correctly (no stack traces)”
 
-### The struggle to learn best practices 
+### The struggle to learn best practices
 
 >"Using Go effectively. Easy to learn, hard to master."
 
@@ -294,7 +301,7 @@ conduct research with module maintainers to identify opportunities to support
 stability and growth of the package ecosystem and help grow Go adoption within
 organizations. To inform this research, we introduced a question on the survey
 to get an idea of the current top challenges for open source maintainers.
- 
+
 <img src="survey2023q1/text_maintainer_challenge.svg" alt="Bar chart of
 challenges for open source module maintainers" class="chart"/>
 

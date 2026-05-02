@@ -36,7 +36,7 @@ A obra original foi traduzida do inglês para o português brasileiro.
 
 [badge-github-sponsors]: https://img.shields.io/github/sponsors/docsdevbr
 
-[badge-license]: https://img.shields.io/github/license/docsdevbr/go-website-pt-br
+[badge-license]: https://img.shields.io/badge/license-BSD--3--Clause-blue
 
 [badge-readme-en]: https://img.shields.io/badge/lang-en-blue
 
@@ -50,7 +50,7 @@ A obra original foi traduzida do inglês para o português brasileiro.
 
 [github-sponsors]: https://github.com/sponsors/docsdevbr
 
-[license]: LICENSE
+[license]: LICENSES/BSD-3-Clause.txt
 
 [page]: https://pt.docs.dev.br/tech/g/go/index.html
 

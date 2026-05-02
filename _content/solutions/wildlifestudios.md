@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+
 linkTitle: How Wildlife Studios builds backend systems in Go
 description: Wildlife is a Brazilian native global company focused on mobile
   gaming. We aim to develop games that will make billions of people happy. We

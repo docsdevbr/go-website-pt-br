@@ -1,9 +1,10 @@
 ---
 # Copyright (c) 2009 The Go Authors.
 
+# SPDX-License-Identifier: BSD-3-Clause
 # Documentation licensed under the 3-Clause BSD License.
 # The original work was translated from English into Brazilian Portuguese.
-# https://github.com/golang/website/blob/-/LICENSE
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
 
 title: "Go Telemetry"
 layout: article
@@ -403,7 +404,7 @@ A: Approximately once a week.
 **Q: What data gets uploaded, if I opt in?**
 
 A: Only counters that are listed in the
-[upload config](https://telemetry.go.dev/config) may be uploaded. 
+[upload config](https://telemetry.go.dev/config) may be uploaded.
 This is generated from the [chart config], which may be more readable.
 
 **Q: How do counters get added to the upload config?**

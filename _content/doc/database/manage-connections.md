@@ -1,3 +1,12 @@
+---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+---
+
 <!--{
   "Title": "Managing connections"
 }-->
@@ -13,7 +22,7 @@ concurrent use by multiple goroutines
 other database access libraries are based on connections that can only be used
 for one operation at a time. To bridge that gap, each `sql.DB` manages a pool
 of active connections to the underlying database, creating new ones as needed
-for parallelism in your Go program. 
+for parallelism in your Go program.
 
 The connection pool is suitable for most data access needs. When you call an
 `sql.DB` `Query` or `Exec` method, the `sql.DB` implementation retrieves an
@@ -81,7 +90,7 @@ application never uses a particular connection for too long without reconnecting
 
 The `database/sql` package includes functions you can use when a database may
 assign implicit meaning to a sequence of operations executed on a particular
-connection. 
+connection.
 
 The most common example is transactions, which typically start with a `BEGIN`
 command, end with a `COMMIT` or `ROLLBACK` command, and include all the

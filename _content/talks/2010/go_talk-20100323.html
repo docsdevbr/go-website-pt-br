@@ -1,3 +1,12 @@
+<!--
+Copyright (c) 2009 The Go Authors.
+
+SPDX-License-Identifier: BSD-3-Clause
+Documentation licensed under the 3-Clause BSD License.
+The original work was translated from English into Brazilian Portuguese.
+https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+-->
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -69,8 +78,8 @@ import (
 	"http"
 )
 
-func handler(c *http.Conn, r *http.Request) { 
-	fmt.Fprintf(c, "Hello, %s.", r.URL.Path[1:]) 
+func handler(c *http.Conn, r *http.Request) {
+	fmt.Fprintf(c, "Hello, %s.", r.URL.Path[1:])
 }
 
 func main() {
@@ -82,7 +91,7 @@ func main() {
 
 <div class="slide">
 	<h1>New</h1>
-	
+
 	<h2>It's about two years old:</h2>
 	<ul>
 		<li>Design started in late 2007</li>
@@ -100,7 +109,7 @@ func main() {
 
 <div class="slide">
 	<h1>New</h1>
-	
+
 	<h2>Older languages are also frustrating on a day-to-day basis</h2>
 	<h2>Statically-typed languages (C, C++, Java) have issues:</h2>
 	<ul>
@@ -110,7 +119,7 @@ func main() {
 <div style="text-align:center">
 <img src="support/java-typing.png" width="800px" height="90px"><br>
 </div>
-	
+
 	<h2>Dynamic languages (Python, JavaScript) fix some issues but introduce others:</h2>
 	<ul>
 		<li>No compilation means slow code</li>
@@ -135,7 +144,7 @@ func main() {
 		<li>Objective-C: <code>#include &lt;Carbon/Carbon.h&gt;</code> reads 124,730 lines from 689 files</li>
 		<li>We haven't done any real work yet!</li>
 	</ul>
-				
+
 	<h2>In Go: <code>import "fmt"</code> reads <i>one</i> file: 184 lines summarizing 7 packages</h2>
 </div>
 
@@ -147,7 +156,7 @@ func main() {
 
 <div class="slide">
 	<h1>Experimental</h1>
-	
+
 	<h2>Go is still unproven</h2>
 	<h2>Language is still evolving</h2>
 	<h2>Package library is incomplete</h2>
@@ -161,7 +170,7 @@ func main() {
 
 <div class="slide">
 	<h1>Concurrent</h1>
-	
+
 	<h2>Unix philosophy: write <i>programs</i> that do one thing and do it well</h2>
 	<h2>Connect them with <i>pipes</i>:</h2>
 	<ul>
@@ -178,7 +187,7 @@ func main() {
 
 <div class="slide">
 	<h1>Concurrent</h1>
-	
+
 	<h2>Start a new flow of control with the <code>go</code> keyword</h2>
 	<h2>Parallel computation is easy:</h2>
 <pre>
@@ -197,7 +206,7 @@ func main() {
 
 <div class="slide">
 	<h1>Concurrent</h1>
-	
+
 	<h2>Consider web servers ("the C10k problem"):</h2>
 	<ul>
 		<li>"Thread per connection" approach is conceptually neat, but doesn't scale well in practice</li>
@@ -215,7 +224,7 @@ func main() {
 
 <div class="slide">
 	<h1>Concurrent</h1>
-	
+
 	<h2>Let's look again at our simple parallel computation:</h2>
 <pre>
 func main() {
@@ -233,7 +242,7 @@ func main() {
 
 <div class="slide">
 	<h1>Concurrent</h1>
-	
+
 	<h2>Goroutines communicate with other goroutines via channels</h2>
 <pre>
 func computeAndSend(ch chan int, x, y, z int) {
@@ -253,7 +262,7 @@ func main() {
 
 <div class="slide">
 	<h1>Concurrent</h1>
-	
+
 	<h2>In traditional concurrent programs, you <i>communicate by sharing memory</i>. In Go, you <i>share memory by communicating</i>:</h2>
 	<ul>
 		<li>Communication (the <code>&lt;-</code> operator) is sharing and synchronization</li>
@@ -273,7 +282,7 @@ func main() {
 
 <div class="slide">
 	<h1>Garbage Collected</h1>
-	
+
 	<h2>Automatic memory management makes writing (and maintaining) programs easier</h2>
 	<h2>Especially in a concurrent world:</h2>
 	<ul>
@@ -342,7 +351,7 @@ type Rect struct { X0, Y0, X1, Y1 int }
 
 <div class="slide">
 	<h1>Systems Language</h1>
-	
+
 	<h2>Quote from http://loadcode.blogspot.com/2009/12/go-vs-java.html</h2>
 
 <h2>

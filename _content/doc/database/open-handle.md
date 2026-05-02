@@ -1,3 +1,12 @@
+---
+# Copyright (c) 2009 The Go Authors.
+
+# SPDX-License-Identifier: BSD-3-Clause
+# Documentation licensed under the 3-Clause BSD License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
+---
+
 <!--{
   "Title": "Opening a database handle",
   "Breadcrumb": true
@@ -92,7 +101,7 @@ For more, see [Storing database credentials](#store_credentials).
 
 Use the [`sql.Open` function](https://pkg.go.dev/database/sql#Open) when you
 want to connect using a connection string. The format for the string will vary
-depending on the driver you're using. 
+depending on the driver you're using.
 
 Here's an example for MySQL:
 
@@ -204,7 +213,7 @@ password := os.Getenv("DB_PASS")
 ```
 
 This approach also lets you set the environment variables yourself for local
-testing. 
+testing.
 
 ### Freeing resources {#free_resources}
 

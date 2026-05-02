@@ -1,9 +1,10 @@
 ---
 # Copyright (c) 2009 The Go Authors.
 
+# SPDX-License-Identifier: BSD-3-Clause
 # Documentation licensed under the 3-Clause BSD License.
 # The original work was translated from English into Brazilian Portuguese.
-# https://github.com/golang/website/blob/-/LICENSE
+# https://github.com/docsdevbr/go-website-pt-br/blob/-/LICENSES/BSD-3-Clause.txt
 
 title: Finding unreachable functions with deadcode
 date: 2023-12-12
@@ -168,7 +169,7 @@ the blank cells are the dead code.
   https://docs.google.com/presentation/d/1DH6Ycdqpt-Zel88lINAuudA6cp0e64ILfHOJq8hJ3v8
   Exported using "File > Download > SVG"
   Cropped using Inkscape "Edit > Resize Page to Selection"
--->  
+-->
 <div class="image">
 <center>
   <img src="deadcode-rta.svg" alt="illustration of Rapid Type Analysis"/><br/>  <i>
