@@ -1,5 +1,5 @@
 ---
-# Copyright (c) 2009 The Go Authors.
+# SPDX-FileCopyrightText: 2009 The Go Authors.
 
 # SPDX-License-Identifier: BSD-3-Clause
 # Documentation licensed under the 3-Clause BSD License.
