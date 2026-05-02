@@ -41,7 +41,7 @@ The original work was translated from English into Brazilian Portuguese.
 
 [badge-readme-en]: https://img.shields.io/badge/lang-en-blue
 
-[badge-readme-pt-br]: https://img.shields.io/badge/lang-pt--br-blue
+[badge-readme-pt-br]: https://img.shields.io/badge/lang-pt--br-dark--green
 
 [badge-reuse]: https://api.reuse.software/badge/github.com/docsdevbr/go-website-pt-br
 
@@ -63,4 +63,4 @@ The original work was translated from English into Brazilian Portuguese.
 
 [reuse]: https://api.reuse.software/info/github.com/docsdevbr/go-website-pt-br
 
-[sponsor]: https://pt.docs.dev.br/sponsor.html
+[sponsor]: https://en.docs.dev.br/sponsor.html
